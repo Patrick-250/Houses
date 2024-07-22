@@ -1,0 +1,22 @@
+.room-detail {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.btn {
+  background-color: rgb(9, 153, 9);
+  color: white;
+  padding: 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: rgb(106, 166, 140);
+  transition: all 0.5s ease;
+}
