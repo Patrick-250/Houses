@@ -26,6 +26,7 @@ const Login = () => {
       JSON.stringify(sessionStorage.setItem("token", res.data.token));
       setEmail("");
       setPassword("");
+      window.location.replace("/");
     } catch (err) {
       console.log(err);
     }
