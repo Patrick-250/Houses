@@ -33,16 +33,15 @@ const getRoom = asyncHandler(async (req, res) => {
 });
 //upadate a Room
 const updateRoom = asyncHandler(async (req, res) => {
+  //checking if the room we wanna update actually exists on the database
   const room = await Room.findById({ _id: req.params.id });
-  if (room.user_id.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("you can update only your room");
+  if (!room) {
+    res.status(404);
+    throw new Error("such room does not exist");
   }
-
   const updatedRoom = await Room.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  console.log(`${req.user} and ${post.user_id}`);
   res.status(200).json(updatedRoom);
 });
 

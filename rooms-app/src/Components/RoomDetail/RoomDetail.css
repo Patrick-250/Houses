@@ -29,3 +29,18 @@
   border-bottom: 1px solid grey;
   padding-bottom: 15px;
 }
+.upd {
+  font-size: 20px;
+  font-weight: 400;
+  background-color: rgb(56, 190, 83);
+  cursor: pointer;
+  font-style: italic;
+  font-family: sans-serif;
+  padding: 10px;
+  color: aliceblue;
+  /* background-color: rgb(94, 94, 102);
+  color: white; */
+}
+.upd:hover {
+  background-color: rgb(86, 127, 24);
+}
