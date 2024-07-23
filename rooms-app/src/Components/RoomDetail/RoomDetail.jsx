@@ -32,6 +32,13 @@ const RoomDetail = () => {
     fetchRoom();
   }, []);
   console.log(data);
+  useEffect(() => {
+    if (token) {
+      setEdit(true);
+    } else {
+      setEdit(false);
+    }
+  }, [token]);
   // if (token) {
   //   setEdit(true)
   // }
