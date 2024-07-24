@@ -8,7 +8,31 @@
   position: sticky;
   top: 0;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   margin-bottom: 20px;
+}
+.log {
+  color: goldenrod;
+  font-size: 27px;
+}
+.rp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+}
+.out {
+  border: 2px solid red;
+  border-radius: 5px;
+  color: red;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.namex {
+  font-style: italic;
+  margin-left: 5px;
+  font-weight: bold;
 }

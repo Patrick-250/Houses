@@ -16,5 +16,5 @@ router.route("/current").get(authHandler, currentUser);
 router.route("/update/:id").put(authHandler, updateUser);
 router.route("/delete/:id").delete(authHandler, deleteUser);
 router.route("/").get(authHandler, getAllUsers);
-router.route("/:id").get(authHandler, getUser);
+router.route("/:id").get(getUser);
 module.exports = router;

@@ -25,7 +25,7 @@ const RoomDetail = () => {
   const [newTransfer, setTransfer] = useState("");
   const [newMedicationPlan, setMedication] = useState("");
   const [newDetail, setNewDetail] = useState("");
-  const handleUpdate = async () => {
+  const handleUpdate = async (e) => {
     try {
       await axios.put(
         `http://localhost:3000/api/rooms/${id}`,

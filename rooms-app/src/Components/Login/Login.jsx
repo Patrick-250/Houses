@@ -24,6 +24,8 @@ const Login = () => {
       //console.log(res.data.token);
       //dispatch(getToken(res.data.token));
       JSON.stringify(sessionStorage.setItem("token", res.data.token));
+      JSON.stringify(sessionStorage.setItem("userId", res.data.id));
+
       setEmail("");
       setPassword("");
       window.location.replace("/");
