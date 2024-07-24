@@ -22,10 +22,11 @@ const roomSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // categories: {
-    //   type: Array,
-    //   default: [],
-    // },
+    detail: {
+      type: String,
+      required: true,
+      default: "Click edit to add more details",
+    },
   },
   { timestamps: true }
 );

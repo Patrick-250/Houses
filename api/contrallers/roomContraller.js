@@ -4,7 +4,7 @@ const Room = require("../schemas/roomSchema");
 const dotenv = require("dotenv").config();
 //create a room
 const createRoom = asyncHandler(async (req, res) => {
-  const { diet, transfer, medicationPlan, number } = req.body;
+  const { diet, transfer, medicationPlan, number, detail } = req.body;
   //check the required info
   if (!diet || !transfer || !medicationPlan || !number) {
     res.status(400);
@@ -16,6 +16,7 @@ const createRoom = asyncHandler(async (req, res) => {
     transfer,
     medicationPlan,
     number,
+    detail,
     // user_id: req.user.id,
   });
   res.status(201).json(room);

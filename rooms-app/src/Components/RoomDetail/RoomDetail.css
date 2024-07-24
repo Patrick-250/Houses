@@ -15,6 +15,7 @@
   padding: 10px;
   font-family: sans-serif;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 .btn:hover {
   background-color: rgb(106, 166, 140);
@@ -43,4 +44,35 @@
 }
 .upd:hover {
   background-color: rgb(86, 127, 24);
+}
+.fm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sb-btn {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+.com-container {
+  flex: 1;
+}
+.details {
+  flex: 1;
+  margin-left: 40px;
+}
+.more {
+  text-align: center;
+  color: green;
+  font-size: 30px;
 }

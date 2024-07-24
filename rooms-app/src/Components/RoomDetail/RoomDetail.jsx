@@ -23,6 +23,7 @@ const RoomDetail = () => {
   const [newDiet, setDiet] = useState("");
   const [newTransfer, setTransfer] = useState("");
   const [newMedicationPlan, setMedication] = useState("");
+  const [newDetail, setNewDetail] = useState("");
   const handleUpdate = async () => {
     try {
       await axios.put(
@@ -31,11 +32,14 @@ const RoomDetail = () => {
           diet: newDiet,
           transfer: newTransfer,
           medicationPlan: newMedicationPlan,
+          detail: newDetail,
         },
         {
           headers: { Authorization: newToken },
         }
       );
+      //detailUpdate();
+      setNewDetail("");
       setDiet("");
       setMedication("");
       setTransfer("");
@@ -43,8 +47,7 @@ const RoomDetail = () => {
       setEdit(false);
     } catch (error) {}
   };
-  //console.log(diet, transfer, medicationPlan);
-  console.log(id);
+
   useEffect(() => {
     const fetchRoom = async () => {
       try {
@@ -58,13 +61,6 @@ const RoomDetail = () => {
     fetchRoom();
   }, []);
   console.log(data);
-  // useEffect(() => {
-  //   if (token) {
-  //     setEdit(true);
-  //   } else {
-  //     setEdit(false);
-  //   }
-  // }, [token]);
   //login and update button that changes dynamically
   let button;
   let update;
@@ -107,6 +103,15 @@ const RoomDetail = () => {
       </div>
     );
   }
+
+  //setting the details
+  // const render = info.map((x) => {
+  //   return (
+  //     <div className="cotent" style={{ textAlign: "center" }}>
+  //       {x.comment}
+  //     </div>
+  //   );
+  // });
   return (
     <div className="room-detail">
       <div className="info">Room number :{data.number}</div>
@@ -152,6 +157,41 @@ const RoomDetail = () => {
           data.medicationPlan
         )}
       </div>
+      <div className="wrapper">
+        <div className="com-container">
+          {edit && (
+            <>
+              {" "}
+              <div style={{ fontSize: "30px", color: "blue" }}>
+                Edit more details
+              </div>
+              <textarea
+                style={{
+                  padding: "20px",
+                  maxWidth: "100%",
+                  marginBottom: "20px",
+                }}
+                placeholder="Edit more details here....."
+                value={newDetail}
+                onChange={(e) => {
+                  setNewDetail(e.target.value);
+                }}
+              ></textarea>
+            </>
+          )}
+
+          {/*the button below shall be used to create the initial details in ur local database*/}
+          {/* <button className="sb-btn" type="submit">
+            create
+          </button> */}
+        </div>
+        <div className="details">
+          <div className="more">More details</div>
+          <div className="cotent" style={{ textAlign: "center" }}>
+            {data.detail}
+          </div>
+        </div>
+      </div>
       <div className="btns">
         <div
           className="btn"
@@ -178,6 +218,8 @@ const RoomDetail = () => {
 };
 
 export default RoomDetail;
+
+//code below might be needed
 //  {
 //    !edit ? (
 //      <Link to={"/Login"} className="link">
@@ -186,3 +228,33 @@ export default RoomDetail;
 //    ) : (
 //    );
 //  }
+
+//  <div className="cotent" style={{ textAlign: "center" }}>
+//    dammy
+//  </div>;
+
+//  <form className="fm" onSubmit={createDetail}>
+//    {edit && (
+//      <>
+//        {" "}
+//        <div style={{ fontSize: "30px", color: "blue" }}>Edit more details</div>
+//        <textarea
+//          style={{
+//            padding: "20px",
+//            maxWidth: "100%",
+//            marginBottom: "20px",
+//          }}
+//          placeholder="Edit more details here....."
+//          value={detail}
+//          onChange={(e) => {
+//            setDetail(e.target.value);
+//          }}
+//        ></textarea>
+//      </>
+//    )}
+
+//    {/*the button below shall be used to create the initial details in ur local database*/}
+//    {/* <button className="sb-btn" type="submit">
+//               create
+//             </button> */}
+//  </form>;
