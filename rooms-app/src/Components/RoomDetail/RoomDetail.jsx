@@ -44,7 +44,7 @@ const RoomDetail = () => {
       setDiet("");
       setMedication("");
       setTransfer("");
-      window.location.reload();
+      //window.location.reload();
       setEdit(false);
     } catch (error) {}
   };
@@ -64,14 +64,14 @@ const RoomDetail = () => {
       }
     };
     fetchRoom();
-  }, []);
+  }, [edit]);
   console.log(data);
   //login and update button that changes dynamically
   let button;
   let update;
   if (!user) {
     button = (
-      <Link to={"/Login"} className="link">
+      <Link to={"/Login"} className="btn">
         Login to edit Room
       </Link>
     );
