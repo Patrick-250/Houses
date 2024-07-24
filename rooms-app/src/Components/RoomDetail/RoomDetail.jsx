@@ -71,7 +71,7 @@ const RoomDetail = () => {
   let update;
   if (!user) {
     button = (
-      <Link to={"/Login"} className="btn">
+      <Link to={"/Login"} className="bt">
         Login to edit Room
       </Link>
     );
@@ -108,15 +108,6 @@ const RoomDetail = () => {
       </div>
     );
   }
-
-  //setting the details
-  // const render = info.map((x) => {
-  //   return (
-  //     <div className="cotent" style={{ textAlign: "center" }}>
-  //       {x.comment}
-  //     </div>
-  //   );
-  // });
   return (
     <div className="room-detail">
       <div className="info">Room number :{data.number}</div>
@@ -184,11 +175,6 @@ const RoomDetail = () => {
               ></textarea>
             </>
           )}
-
-          {/*the button below shall be used to create the initial details in ur local database*/}
-          {/* <button className="sb-btn" type="submit">
-            create
-          </button> */}
         </div>
         <div className="details">
           <div className="more">More details</div>
@@ -209,14 +195,7 @@ const RoomDetail = () => {
           </Link>
         </div>
         {update}
-        <div
-          className="btn"
-          // onClick={() => {
-          //   setEdit(true);
-          // }}
-        >
-          {button}
-        </div>
+        <div className="btn n">{button}</div>
       </div>
     </div>
   );

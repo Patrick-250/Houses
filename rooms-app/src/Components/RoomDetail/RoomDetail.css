@@ -78,6 +78,19 @@
   font-size: 30px;
 }
 .n {
-  width: 100%;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.bt {
+  color: white;
+  background-color: rgb(84, 83, 89);
+  text-decoration: none;
   height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
