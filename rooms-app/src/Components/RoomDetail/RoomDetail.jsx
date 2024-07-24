@@ -21,6 +21,7 @@ const RoomDetail = () => {
   const user = token ? true : false;
   //update the room info
   const [newDiet, setDiet] = useState("");
+  console.log(newDiet);
   const [newTransfer, setTransfer] = useState("");
   const [newMedicationPlan, setMedication] = useState("");
   const [newDetail, setNewDetail] = useState("");
@@ -53,6 +54,10 @@ const RoomDetail = () => {
       try {
         const res = await axios.get(`http://localhost:3000/api/rooms/${id}`);
         setData(res.data);
+        setDiet(res.data.diet);
+        setTransfer(res.data.transfer);
+        setNewDetail(res.data.detail);
+        setMedication(res.data.medicationPlan);
         dispatch(getCount(res.data.number));
       } catch (error) {
         console.log(error);
