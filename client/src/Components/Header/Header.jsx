@@ -15,17 +15,19 @@ const Header = () => {
     window.location.replace("/");
   };
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:3000/api/users/${userId}`
-        );
-        setName(res.data.username);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
+    if (userId) {
+      const getUser = async () => {
+        try {
+          const res = await axios.get(
+            `http://localhost:3000/api/users/${userId}`
+          );
+          setName(res.data.username);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getUser();
+    }
   }, []);
   return (
     <div className="header">
