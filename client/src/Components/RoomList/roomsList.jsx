@@ -2,23 +2,39 @@ import React, { useState, useEffect } from "react";
 import "./roomsList.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { getId } from "../../../Redux/roomId";
-import { useDispatch } from "react-redux";
+import roomId, { getId } from "../../../Redux/roomId";
+import { useDispatch, useSelector } from "react-redux";
 const RoomsList = () => {
   const [room, setRoom] = useState([]);
   const dispatch = useDispatch();
+  const { houseId } = useSelector((state) => state);
+  console.log("houseid", houseId.house_id);
   useEffect(() => {
     const fetchRooms = async () => {
-      const res = await axios.get("http://localhost:3000/api/rooms");
-      setRoom(res.data);
-      console.log(res.data);
+      if (houseId.house_id) {
+        const res = await axios.get(
+          `http://localhost:3000/api/rooms/house/${houseId.house_id}`
+        );
+        setRoom(res.data);
+        console.log(res.data);
+      }
     };
     fetchRooms();
-  }, []);
+  }, [houseId.house_id]);
+  const Welcome = (
+    <div className="wel">
+      <div className="hi" style={{ fontSize: "30px" }}>
+        Hello👋
+      </div>
+      <span style={{ fontSize: "30px" }}>Welcome to HousesMngt2</span>
+    </div>
+  );
   const render = room.map((room) => {
     return <Room room={room} key={room._id} />;
   });
-  return <div className="rooms-container">{render}</div>;
+  return (
+    <div className="rooms-container">{houseId.house_id ? render : Welcome}</div>
+  );
 };
 
 export default RoomsList;

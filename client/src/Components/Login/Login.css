@@ -22,11 +22,11 @@
   justify-content: space-around;
   align-items: center;
 }
-.name {
+.nam {
   font-family: sans-serif;
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 25px;
+  font-size: 21px;
   cursor: pointer;
 }
 .input {

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const roomSchema = mongoose.Schema(
   {
-    // user_id: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: "User",
-    // },
+    house_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "House",
+    },
     diet: {
       type: String,
       required: true,

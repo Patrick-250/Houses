@@ -7,9 +7,10 @@
   align-items: center;
   justify-content: center;
   padding-top: 20px;
+  flex: 4;
 }
 .room {
-  width: 30%;
+  width: 25%;
   background-color: rgb(180, 177, 181);
   height: 250px;
   display: flex;
@@ -46,4 +47,13 @@
   .room {
     width: 90%;
   }
+}
+.wel {
+  background-color: rgb(252, 249, 249);
+  width: 65%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const roomRoutes = require("./routes/roomRoutes");
+const houseRoutes = require("./routes/houseRoutes");
 const dataBase = require("./dataBase/dataBase");
 dataBase();
 const dontenv = require("dotenv").config();
@@ -14,3 +15,4 @@ app.listen(port, () => {
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/rooms", roomRoutes);
+app.use("/api/houses", houseRoutes);

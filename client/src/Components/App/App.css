@@ -12,3 +12,9 @@ h1 {
   font-size: 80px;
   font-family: sans-serif;
 }
+.ct {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

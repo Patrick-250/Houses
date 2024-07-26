@@ -6,6 +6,7 @@ const {
   updateRoom,
   deleteRoom,
   getRoom,
+  getHouseRooms,
 } = require("../contrallers/roomContraller");
 const authHandler = require("../middleware/auth");
 //router.use(authHandler);
@@ -15,4 +16,5 @@ router
   .get(getRoom)
   .put(authHandler, updateRoom)
   .delete(authHandler, deleteRoom);
+router.route("/house/:id").get(getHouseRooms);
 module.exports = router;

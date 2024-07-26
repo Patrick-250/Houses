@@ -11,13 +11,14 @@ const createRoom = asyncHandler(async (req, res) => {
     throw new Error("all fields are required are required");
   }
   //creating the room
+  const house_id = "66a3a505688a3fa460f8aff7";
   const room = await Room.create({
     diet,
     transfer,
     medicationPlan,
     number,
     detail,
-    // user_id: req.user.id,
+    house_id,
   });
   res.status(201).json(room);
 });
@@ -27,11 +28,17 @@ const getAllRooms = asyncHandler(async (req, res) => {
   const rooms = await Room.find();
   res.status(200).json(rooms);
 });
-//get a post by id
+//get a room by its id
 const getRoom = asyncHandler(async (req, res) => {
   const room = await Room.findById(req.params.id);
   res.status(200).json(room);
 });
+//get a rooms based on the house id
+const getHouseRooms = asyncHandler(async (req, res) => {
+  const rooms = await Room.find({ house_id: req.params.id });
+  res.status(200).json(rooms);
+});
+
 //upadate a Room
 const updateRoom = asyncHandler(async (req, res) => {
   //checking if the room we wanna update actually exists on the database
@@ -63,5 +70,6 @@ module.exports = {
   getAllRooms,
   updateRoom,
   deleteRoom,
+  getHouseRooms,
   getRoom,
 };

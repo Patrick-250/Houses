@@ -38,21 +38,23 @@ const Login = () => {
       <h2>Login</h2>
       <form className="form" onSubmit={handleSubmit}>
         <label className="label">
-          <div className="name">Email</div>
+          <div className="nam">Email</div>
           <input
             type="text"
             className="input"
             value={email}
+            placeholder="enter email..."
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
         </label>
         <label className="label">
-          <div className="name">password</div>
+          <div className="nam">password</div>
           <input
             type="text"
             className="input"
+            placeholder="enter password..."
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -62,11 +64,11 @@ const Login = () => {
         <button className="btn-register" type="submit">
           Login
         </button>
-        <span>
+        {/* <span>
           <Link className="link" to={"/Register"} style={{ color: "blue" }}>
             Don't have an account? SignUp
           </Link>
-        </span>
+        </span> */}
       </form>
     </div>
   );

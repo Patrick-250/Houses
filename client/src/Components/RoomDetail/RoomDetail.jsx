@@ -9,7 +9,7 @@ import { getCount } from "../../../Redux/counter";
 import { useSelector } from "react-redux";
 const RoomDetail = () => {
   const { token } = useSelector((state) => state.token);
-  console.log(token);
+
   const [edit, setEdit] = useState(false);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -112,9 +112,10 @@ const RoomDetail = () => {
     <div className="room-detail">
       <div className="info">Room number :{data.number}</div>
       <div className="info">
-        Diet :
+        Diet:
         {edit ? (
           <input
+            className="in"
             type="text"
             value={newDiet}
             onChange={(e) => {
@@ -126,9 +127,10 @@ const RoomDetail = () => {
         )}
       </div>
       <div className="info">
-        Transfer :
+        Transfer:
         {edit ? (
           <input
+            className="in"
             type="text"
             value={newTransfer}
             onChange={(e) => {
@@ -140,9 +142,10 @@ const RoomDetail = () => {
         )}
       </div>
       <div className="info">
-        Medication plan :
+        Medication plan:
         {edit ? (
           <input
+            className="in"
             type="text"
             value={newMedicationPlan}
             onChange={(e) => {
@@ -162,6 +165,7 @@ const RoomDetail = () => {
                 Edit more details
               </div>
               <textarea
+                className="text-area"
                 style={{
                   padding: "20px",
                   maxWidth: "100%",
@@ -184,7 +188,7 @@ const RoomDetail = () => {
         </div>
       </div>
       <div className="btns">
-        <div
+        {/* <div
           className="btn"
           onClick={() => {
             dispatch(getCount(null));
@@ -193,8 +197,8 @@ const RoomDetail = () => {
           <Link to={"/"} className="link">
             Home
           </Link>
-        </div>
-        {update}
+        </div> */}
+        <div className="btn-upd">{update}</div>
         <div className="btn n">{button}</div>
       </div>
     </div>
