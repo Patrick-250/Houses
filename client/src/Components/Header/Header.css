@@ -14,16 +14,19 @@
   margin-bottom: 20px;
   z-index: 9999999;
 }
+
 .log {
   color: goldenrod;
   font-size: 27px;
 }
+
 .rp {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 30%;
 }
+
 .out {
   border: 2px solid red;
   border-radius: 5px;
@@ -32,8 +35,27 @@
   font-size: 16px;
   cursor: pointer;
 }
+.out:hover {
+  background-color: rgb(87, 85, 85);
+  color:white;
+  border:rgb(87, 85, 85) ;
+}
 .namex {
   font-style: italic;
   margin-left: 5px;
   font-weight: bold;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .rp {
+    width: 100%;
+    justify-content: center;
+  }
 }

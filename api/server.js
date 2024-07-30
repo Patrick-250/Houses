@@ -9,9 +9,9 @@ const dontenv = require("dotenv").config();
 const app = express();
 app.use(cors());
 const port = process.env.PORT || 9001;
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`app listening on port ${port}`);
-});
+});``
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/rooms", roomRoutes);

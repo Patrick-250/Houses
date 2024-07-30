@@ -122,3 +122,22 @@
 .text-area:focus {
   outline: none;
 }
+
+/* Existing styles */
+
+/* Media query for textarea */
+@media (max-width: 768px) {
+  .com-container textarea {
+    width: 100%;
+    cols: 60;
+    rows: 10;
+  }
+}
+
+@media (max-width: 480px) {
+  .com-container textarea {
+    width: 100%;
+    cols: 40;
+    rows: 8;
+  }
+}

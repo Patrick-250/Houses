@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import axios from "axios";
-import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { getHouseId } from "../../../Redux/houseID";
 import { getCount } from "../../../Redux/counter";
+import logo from "../../assets/images/logo.png"; 
+
+
 const Header = () => {
   const dispatch = useDispatch();
   const { count } = useSelector((state) => state.counter);
@@ -16,11 +17,13 @@ const Header = () => {
   const [name, setName] = useState("");
   const [house, setHouse] = useState("");
   console.log("houseid", houseId);
+
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
     window.location.replace("/");
   };
+
   useEffect(() => {
     if (userId) {
       const getUser = async () => {
@@ -35,7 +38,8 @@ const Header = () => {
       };
       getUser();
     }
-  }, []);
+  }, [userId]);
+
   useEffect(() => {
     if (houseId.house_id) {
       const getHouse = async () => {
@@ -51,7 +55,9 @@ const Header = () => {
       getHouse();
     }
   }, [houseId.house_id]);
+
   console.log(house);
+
   return (
     <div className="header">
       <Link
@@ -69,14 +75,16 @@ const Header = () => {
           justifyContent: "center",
         }}
       >
-        <SiHomeassistantcommunitystore
-          style={{ fontSize: "30px", cursor: "pointer" }}
+        <img
+         src={logo}
+          alt="QLI logo"
+          style={{ width: "190px", height: "30px", cursor: "pointer", color: "black" }}
         />
       </Link>
       <div
         style={{ color: "black", fontFamily: "sans-serif", fontSize: "30px" }}
       >
-        {count ? `Room ${count}` : "Welcome"}
+        {count ? `Room ${count}` : ""}
       </div>
       <div
         style={{
@@ -90,9 +98,9 @@ const Header = () => {
       </div>
       {token && (
         <div className="rp">
-          <div className="log">
-            loged in as:
-            <span className="namex">{name}</span>
+          <div className="log" style={{ color: "black", fontStyle: "oblique" }}>
+            Hi {name},<br />
+            Welcome
           </div>
           <button className="out" onClick={handleLogout}>
             Logout
