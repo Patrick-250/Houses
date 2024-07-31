@@ -40,8 +40,9 @@ const Login = () => {
         <label className="label">
           <div className="nam">Email</div>
           <input
-            type="text"
+            type="email"
             className="input"
+            
             value={email}
             placeholder="enter email..."
             onChange={(e) => {
@@ -52,7 +53,7 @@ const Login = () => {
         <label className="label">
           <div className="nam">password</div>
           <input
-            type="text"
+            type="password"
             className="input"
             placeholder="enter password..."
             value={password}

@@ -11,7 +11,7 @@ const createRoom = asyncHandler(async (req, res) => {
     throw new Error("all fields are required are required");
   }
   //creating the room
-  const house_id = "66a3a505688a3fa460f8aff7";
+  const house_id = "66a924d28b45807187bcd06f";
   const room = await Room.create({
     diet,
     transfer,

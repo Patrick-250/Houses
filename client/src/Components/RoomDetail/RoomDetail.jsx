@@ -104,7 +104,7 @@ const RoomDetail = () => {
           setEdit(false);
         }}
       >
-        Cancle
+        Cancel
       </div>
     );
   }
@@ -164,13 +164,8 @@ const RoomDetail = () => {
               <div style={{ fontSize: "30px", color: "blue" }}>
                 Edit more details
               </div>
-              <textarea
-                className="text-area"
-                style={{
-                  padding: "20px",
-                  maxWidth: "100%",
-                  marginBottom: "20px",
-                }}
+              <textarea cols={120} rows={15}
+               
                 placeholder="Edit more details here....."
                 value={newDetail}
                 onChange={(e) => {
