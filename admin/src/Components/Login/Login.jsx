@@ -9,16 +9,16 @@ import { useSelector } from "react-redux";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [err, setErr] = useState("");
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.token);
   const { id } = useSelector((state) => state.id);
+  const [err, setErr] = useState("");
   console.log(token, id);
   const handleSubmit = async (e) => {
     e.preventDefault();
     //dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://localhost:3000/api/users/login", {
+      const res = await axios.post("http://localhost:3000/api/admin/login", {
         email,
         password,
       });
@@ -51,7 +51,7 @@ const Login = () => {
           />
         </label>
         <label className="label">
-          <div className="nam">password</div>
+          <div className="nam">Password</div>
           <input
             type="password"
             className="input"

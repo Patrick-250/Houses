@@ -1,15 +1,6 @@
 const mongoose = require("mongoose");
-const userSchema = mongoose.Schema(
+const adminSchema = mongoose.Schema(
   {
-    house_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "House",
-    },
-    house_name: {
-      type: String,
-      required: true,
-    },
     username: {
       type: String,
       required: true,
@@ -26,4 +17,4 @@ const userSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Admin", adminSchema);

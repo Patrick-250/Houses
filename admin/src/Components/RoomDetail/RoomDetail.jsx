@@ -25,7 +25,6 @@ const RoomDetail = () => {
   const [newTransfer, setTransfer] = useState("");
   const [newMedicationPlan, setMedication] = useState("");
   const [newDetail, setNewDetail] = useState("");
-  const [err, setErr] = useState("");
   const handleUpdate = async (e) => {
     try {
       await axios.put(
@@ -47,9 +46,7 @@ const RoomDetail = () => {
       setTransfer("");
       //window.location.reload();
       setEdit(false);
-    } catch (error) {
-      setErr(error.response.data.err);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -167,9 +164,8 @@ const RoomDetail = () => {
               <div style={{ fontSize: "30px", color: "blue" }}>
                 Edit more details
               </div>
-              <textarea
-                cols={120}
-                rows={15}
+              <textarea cols={120} rows={15}
+               
                 placeholder="Edit more details here....."
                 value={newDetail}
                 onChange={(e) => {
@@ -186,9 +182,6 @@ const RoomDetail = () => {
           </div>
         </div>
       </div>
-      <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
-        {err}
-      </span>
       <div className="btns">
         {/* <div
           className="btn"

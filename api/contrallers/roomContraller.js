@@ -43,14 +43,24 @@ const getHouseRooms = asyncHandler(async (req, res) => {
 const updateRoom = asyncHandler(async (req, res) => {
   //checking if the room we wanna update actually exists on the database
   const room = await Room.findById({ _id: req.params.id });
+  //restricting the users from updating rooms in houses that they dont belong
+  if (req.user.house_id === room.house_id.toString()) {
+    const updatedRoom = await Room.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updatedRoom);
+  } else {
+    res.status(400).json({
+      err: "Sorry! you can't update this room, because you don't belong to this house",
+    });
+  }
   if (!room) {
     res.status(404);
     throw new Error("such room does not exist");
   }
-  const updatedRoom = await Room.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
-  res.status(200).json(updatedRoom);
+
+  console.log(req.user.house_id);
+  console.log(room.house_id.toString());
 });
 
 //delete a room
