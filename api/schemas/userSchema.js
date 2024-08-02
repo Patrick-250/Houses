@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 const userSchema = mongoose.Schema(
   {
-    house_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "House",
-    },
-    house_name: {
-      type: String,
+    house_ids: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "House",
+      },
+    ],
+    house_names: {
+      type: Array,
       required: true,
     },
     username: {

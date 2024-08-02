@@ -41,10 +41,14 @@ const getHouseRooms = asyncHandler(async (req, res) => {
 
 //upadate a Room
 const updateRoom = asyncHandler(async (req, res) => {
+  //check if the user can update the room
+  // const { room_id } = req.params.id;
+  // const user_id = req.user._id;
   //checking if the room we wanna update actually exists on the database
+  console.log(req.user);
   const room = await Room.findById({ _id: req.params.id });
   //restricting the users from updating rooms in houses that they dont belong
-  if (req.user.house_id === room.house_id.toString()) {
+  if (req.user.house_ids.includes(room.house_id.toString())) {
     const updatedRoom = await Room.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
@@ -59,7 +63,6 @@ const updateRoom = asyncHandler(async (req, res) => {
     throw new Error("such room does not exist");
   }
 
-  console.log(req.user.house_id);
   console.log(room.house_id.toString());
 });
 

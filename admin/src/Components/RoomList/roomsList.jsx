@@ -7,7 +7,8 @@ import roomId, { getId } from "../../../Redux/roomId";
 import { useDispatch, useSelector } from "react-redux";
 const RoomsList = () => {
   const [user, setUser] = useState([]);
-  const { username, email, createdAt, house_name } = user;
+  const { username, email, createdAt, house_names } = user;
+  console.log(house_names);
   const date = new Date(createdAt).toDateString();
   const dispatch = useDispatch();
   const { houseId } = useSelector((state) => state);
@@ -45,6 +46,16 @@ const RoomsList = () => {
       console.error(error);
     }
   };
+  console.log(house_names);
+  // const houseList = (house_names) => {
+  //   if (Array.isArray(house_names)) {
+  //     return <div>is loading..</div>;
+  //   }
+  //   return house_names.map((h, i) => {
+  //     return <div key={i}>{h}</div>;
+  //   });
+  // };
+  // console.log(houseList(house_names));
   const render = (
     <div className="user-container">
       <div className="title">User Info</div>
@@ -53,7 +64,12 @@ const RoomsList = () => {
       </div>
       <div className="username">{username}</div>
       <div className="email">{email}</div>
-      <div className="house">{house_name}</div>
+      <div
+        className="house"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        {house_names}
+      </div>
       <div className="date">{`Registered on ${date}`}</div>
       <button className="del" onClick={handleDelete}>
         Delete User

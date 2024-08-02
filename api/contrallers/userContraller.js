@@ -3,27 +3,31 @@ const bcrypt = require("bcrypt");
 const User = require("../schemas/userSchema");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv").config();
-//const Post = require("../schemas/postSchema");
 //create user
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password, house_name } = req.body;
+  const { username, email, password, house_ids } = req.body;
   //check the required info
-  if (!username || !email || !password || !house_name) {
+  if (!username || !email || !password || !Array.isArray(house_ids)) {
     res.status(400);
     throw new Error("all the fields are required");
   }
-  const house_id =
-    house_name === "House 1"
-      ? "66a3a4ea688a3fa460f8afed"
-      : house_name === "House 2"
-      ? "66a3a4f0688a3fa460f8afef"
-      : house_name === "House 3"
-      ? "66a3a4f5688a3fa460f8aff1"
-      : house_name === "House 4"
-      ? "66a3a4fb688a3fa460f8aff3"
-      : house_name === "House 5"
-      ? "66a3a500688a3fa460f8aff5"
-      : "66a3a505688a3fa460f8aff7";
+  //iterate into the house_ids array and push house names to the house_names array
+  let house_names = [];
+  for (let i = 0; i < house_ids.length; i++) {
+    if (house_ids[i] === "66a3a4ea688a3fa460f8afed") {
+      house_names.push("House 1");
+    } else if (house_ids[i] === "66a3a4f0688a3fa460f8afef") {
+      house_names.push("House 2");
+    } else if (house_ids[i] === "66a3a4f5688a3fa460f8aff1") {
+      house_names.push("House 3");
+    } else if (house_ids[i] === "66a3a4fb688a3fa460f8aff3") {
+      house_names.push("House 4");
+    } else if (house_ids[i] === "66a3a500688a3fa460f8aff5") {
+      house_names.push("House 5");
+    } else if (house_ids[i] === "66a3a505688a3fa460f8aff7") {
+      house_names.push("House 6");
+    }
+  }
   //check if the user already has an account
   const userAvilable = await User.findOne({ email });
   if (userAvilable) {
@@ -33,13 +37,14 @@ const createUser = asyncHandler(async (req, res) => {
   //hash pasword and create the user
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = await User.create({
-    house_id,
-    house_name,
+    house_ids,
+    house_names,
     username,
     email,
     password: hashedPassword,
   });
   res.status(200).json(user);
+  console.log(user);
 });
 
 //login user
@@ -67,7 +72,7 @@ const loginUser = asyncHandler(async (req, res) => {
           username: userExists.username,
           email: userExists.email,
           id: userExists._id,
-          house_id: userExists.house_id,
+          house_ids: userExists.house_ids,
         },
       },
       process.env.SECRET,

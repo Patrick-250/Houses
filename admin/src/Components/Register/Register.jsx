@@ -10,11 +10,16 @@ const Register = () => {
   console.log(username, email, password);
 
   //checkbox logic
-  const [selectedHouse, setSelectedHouse] = useState(null);
+  const [selectedHouse, setSelectedHouse] = useState([]);
   console.log(selectedHouse);
-  const handleCheckboxChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedHouse(selectedValue);
+  const handleCheckboxChange = (e) => {
+    const { checked, value } = e.target;
+    if (checked) {
+      setSelectedHouse((prev) => [...prev, value]);
+    } else {
+      setSelectedHouse((prev) => prev.filter((val) => val !== value));
+    }
+    console.log(selectedHouse);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +29,7 @@ const Register = () => {
         username,
         email,
         password,
-        house_name: selectedHouse,
+        house_ids: selectedHouse,
       });
       setEmail("");
       setPassword("");
@@ -76,8 +81,8 @@ const Register = () => {
         <label id="1" style={{ padding: "5px" }}>
           <input
             type="checkbox"
-            value="House 1"
-            checked={selectedHouse === "House 1"}
+            value="66a3a4ea688a3fa460f8afed"
+            checked={selectedHouse.includes("66a3a4ea688a3fa460f8afed")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -92,9 +97,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="House 2"
+            value="66a3a4f0688a3fa460f8afef"
             type="checkbox"
-            checked={selectedHouse === "House 2"}
+            checked={selectedHouse.includes("66a3a4f0688a3fa460f8afef")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -109,9 +114,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="House 3"
+            value="66a3a4f5688a3fa460f8aff1"
             type="checkbox"
-            checked={selectedHouse === "House 3"}
+            checked={selectedHouse.includes("66a3a4f5688a3fa460f8aff1")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -126,9 +131,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="House 4"
+            value="66a3a4fb688a3fa460f8aff3"
             type="checkbox"
-            checked={selectedHouse === "House 4"}
+            checked={selectedHouse.includes("66a3a4fb688a3fa460f8aff3")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -143,9 +148,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="House 5"
+            value="66a3a500688a3fa460f8aff5"
             type="checkbox"
-            checked={selectedHouse === "House 5"}
+            checked={selectedHouse.includes("66a3a500688a3fa460f8aff5")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -160,9 +165,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="House 6"
+            value="66a3a505688a3fa460f8aff7"
             type="checkbox"
-            checked={selectedHouse === "House 6"}
+            checked={selectedHouse.includes("66a3a505688a3fa460f8aff7")}
             onChange={handleCheckboxChange}
           />
           <span
