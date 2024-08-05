@@ -14,17 +14,17 @@ const createUser = asyncHandler(async (req, res) => {
   //iterate into the house_ids array and push house names to the house_names array
   let house_names = [];
   for (let i = 0; i < house_ids.length; i++) {
-    if (house_ids[i] === "66a3a4ea688a3fa460f8afed") {
+    if (house_ids[i] === "66a924b88b45807187bcd065") {
       house_names.push("House 1");
-    } else if (house_ids[i] === "66a3a4f0688a3fa460f8afef") {
+    } else if (house_ids[i] === "66a924c18b45807187bcd067") {
       house_names.push("House 2");
-    } else if (house_ids[i] === "66a3a4f5688a3fa460f8aff1") {
+    } else if (house_ids[i] === "66a924c58b45807187bcd069") {
       house_names.push("House 3");
-    } else if (house_ids[i] === "66a3a4fb688a3fa460f8aff3") {
+    } else if (house_ids[i] === "66a924ca8b45807187bcd06b") {
       house_names.push("House 4");
-    } else if (house_ids[i] === "66a3a500688a3fa460f8aff5") {
+    } else if (house_ids[i] === "66a924ce8b45807187bcd06d") {
       house_names.push("House 5");
-    } else if (house_ids[i] === "66a3a505688a3fa460f8aff7") {
+    } else if (house_ids[i] === "66a924d28b45807187bcd06f") {
       house_names.push("House 6");
     }
   }
