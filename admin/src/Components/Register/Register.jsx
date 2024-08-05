@@ -50,6 +50,7 @@ const Register = () => {
           <input
             type="text"
             className="input"
+            placeholder="Username"
             value={username}
             onChange={(e) => {
               setUsername(e.target.value);
@@ -59,8 +60,9 @@ const Register = () => {
         <label className="label">
           <div className="nam">Email</div>
           <input
-            type="text"
+            type="Email"
             className="input"
+            placeholder="Email"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -70,8 +72,9 @@ const Register = () => {
         <label className="label">
           <div className="nam">Password</div>
           <input
-            type="text"
+            type="password"
             className="input"
+            placeholder="Password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);

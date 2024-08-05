@@ -93,7 +93,7 @@ const Header = () => {
           fontWeight: "bold",
         }}
       >
-        Administrator Pannel
+        Administrator Panel
       </div>
       <div
         style={{
