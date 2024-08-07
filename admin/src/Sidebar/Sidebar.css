@@ -84,7 +84,7 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 li .me:hover {
-  color: blue;
+  color:black;
 }
 .name {
   display: none;

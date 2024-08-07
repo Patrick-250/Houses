@@ -22,11 +22,9 @@ const RoomsList = () => {
     fetchRooms();
   }, [houseId.house_id]);
   const Welcome = (
-    <div className="wel" style={{backgroundColor:"#C17817"}}>
-      <div className="hi" style={{ fontSize: "30px" }}>
-        Hello &#128075;,
-      </div>
-      <span style={{ fontSize: "30px" }}>Welcome to QLI Houses </span>
+    <div className="wel" style={{backgroundColor:"#67777e"}}>
+      
+      <span style={{ fontSize: "30px",color:"#8c917e" }}>Welcome to QLI Houses </span>
     </div>
   );
   const render = room.map((room) => {

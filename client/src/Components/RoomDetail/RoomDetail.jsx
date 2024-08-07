@@ -82,10 +82,7 @@ const RoomDetail = () => {
     button = (
       <button
         className="link"
-        style={{
-          backgroundColor: "transparent",
-          border: "none",
-        }}
+        
         onClick={() => {
           setEdit(true);
         }}
@@ -164,7 +161,7 @@ const RoomDetail = () => {
           {edit && (
             <>
               {" "}
-              <div style={{ fontSize: "30px", color: "blue" }}>
+              <div style={{ fontSize: "30px", color:"#808080" }}>
                 Edit more details
               </div>
               <textarea
@@ -179,8 +176,8 @@ const RoomDetail = () => {
             </>
           )}
         </div>
-        <div className="details">
-          <div className="more">More details</div>
+        <div className="details" >
+          <div className="more "><h4 style={{}}>More details</h4></div>
           <div className="cotent" style={{ textAlign: "center" }}>
             {data.detail}
           </div>
@@ -189,7 +186,7 @@ const RoomDetail = () => {
       <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
         {err}
       </span>
-      <div className="btns">
+      <div className="btns" >
         {/* <div
           className="btn"
           onClick={() => {

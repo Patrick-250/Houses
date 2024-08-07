@@ -26,11 +26,9 @@ const RoomsList = () => {
     fetchRooms();
   }, [houseId.house_id]);
   const Welcome = (
-    <div className="wel" style={{ backgroundColor: "#C17817" }}>
-      <div className="hi" style={{ fontSize: "30px" }}>
-        Hello &#128075;,
-      </div>
-      <span style={{ fontSize: "30px" }}>
+    <div className="wel" style={{ backgroundColor: "#646c75" }}>
+      
+      <span className="Message"     style={{ fontSize: "30px",color:"#808080"}}>
         Welcome to QLI Houses Admin Pannel
       </span>
     </div>
@@ -60,7 +58,7 @@ const RoomsList = () => {
     <div className="user-container">
       <div className="title">User Info</div>
       <div className="user-icon">
-        <HiMiniUserCircle style={{ fontSize: "100px", color: "green" }} />
+        <HiMiniUserCircle style={{ fontSize: "100px" }} />
       </div>
       <div className="username">{username}</div>
       <div className="email">{email}</div>

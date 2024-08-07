@@ -42,10 +42,10 @@
 }
 h2 {
   font-size: 60px;
-  color: rgb(65, 222, 65);
+  color: #808080;
 }
 .btn-register {
-  background-color: rgb(11, 185, 11);
+  background-color: #808080;
   width: 40%;
   text-align: center;
   margin: 10px;
@@ -55,7 +55,7 @@ h2 {
   cursor: pointer;
 }
 .btn-register:hover {
-  background-color: green;
+  background-color: #96b0c9;
   transition: all 0.5s ease;
 }
 span {

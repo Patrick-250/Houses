@@ -13,8 +13,18 @@
   justify-content: space-around;
   margin-bottom: 20px;
   z-index: 9999999;
+ 
 }
+.icon{
+  
+  font-size: 20px;
+  cursor: pointer;
 
+
+}
+.icon:hover{
+  color: white;
+}
 .log {
   color: goldenrod;
   font-size: 27px;
@@ -28,16 +38,16 @@
 }
 
 .out {
-  border: 2px solid red;
+  border: 12px rgb(87, 85, 85);
   border-radius: 5px;
-  color: red;
+  color: rgb(87, 85, 85);
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
 }
 .out:hover {
   background-color: rgb(87, 85, 85);
-  color:white;
+  color: white;
   border:rgb(87, 85, 85) ;
 }
 .namex {
@@ -47,15 +57,18 @@
 }
 
 /* Media Query for smaller screens */
-@media (max-width: 600px) {
+@media (max-width: 100px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    
+    width: 100%;
   }
 
   .rp {
     width: 100%;
     justify-content: center;
+  }
+  .logo {
+      width: 10px;
+      height: 20px;
   }
 }
