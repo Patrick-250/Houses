@@ -82,10 +82,7 @@ const RoomDetail = () => {
     button = (
       <button
         className="link"
-        style={{
-          backgroundColor: "transparent",
-          border: "none",
-        }}
+        
         onClick={() => {
           setEdit(true);
         }}
@@ -114,111 +111,83 @@ const RoomDetail = () => {
   return (
     <div className="room-detail">
       <div className="info">Room number :{data.number}</div>
-      <div
-        className="container"
-        style={{
-          display: "flex",
-          flexDirection: "row-reverse",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          className="img"
-          style={{
-            flex: "1",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-around",
-            height: "max-content",
-          }}
-        >
-          <img
-            src="/images/1.jpg"
-            alt=""
-            style={{ width: "200px", borderRadius: "10px", height: "200px" }}
+      <div className="info">
+        Diet:
+        {edit ? (
+          <input
+            className="in"
+            type="text"
+            value={newDiet}
+            onChange={(e) => {
+              setDiet(e.target.value);
+            }}
           />
-          <span>Patric T</span>
-        </div>
-        <div className="text" style={{ flex: "2" }}>
-          <div className="info">
-            Diet:
-            {edit ? (
-              <input
-                className="in"
-                type="text"
-                value={newDiet}
-                onChange={(e) => {
-                  setDiet(e.target.value);
-                }}
-              />
-            ) : (
-              data.diet
-            )}
-          </div>
-          <div className="info">
-            Transfer:
-            {edit ? (
-              <input
-                className="in"
-                type="text"
-                value={newTransfer}
-                onChange={(e) => {
-                  setTransfer(e.target.value);
-                }}
-              />
-            ) : (
-              data.transfer
-            )}
-          </div>
-          <div className="info">
-            Medication plan:
-            {edit ? (
-              <input
-                className="in"
-                type="text"
-                value={newMedicationPlan}
-                onChange={(e) => {
-                  setMedication(e.target.value);
-                }}
-              />
-            ) : (
-              data.medicationPlan
-            )}
-          </div>
-          <div className="wrapper">
-            <div className="com-container">
-              {edit && (
-                <>
-                  {" "}
-                  <div style={{ fontSize: "30px", color: "blue" }}>
-                    Edit more details
-                  </div>
-                  <textarea
-                    cols={120}
-                    rows={15}
-                    placeholder="Edit more details here....."
-                    value={newDetail}
-                    onChange={(e) => {
-                      setNewDetail(e.target.value);
-                    }}
-                  ></textarea>
-                </>
-              )}
-            </div>
-            <div className="details">
-              <div className="more">More details</div>
-              <div className="cotent" style={{ textAlign: "center" }}>
-                {data.detail}
+        ) : (
+          data.diet
+        )}
+      </div>
+      <div className="info">
+        Transfer:
+        {edit ? (
+          <input
+            className="in"
+            type="text"
+            value={newTransfer}
+            onChange={(e) => {
+              setTransfer(e.target.value);
+            }}
+          />
+        ) : (
+          data.transfer
+        )}
+      </div>
+      <div className="info">
+        Medication plan:
+        {edit ? (
+          <input
+            className="in"
+            type="text"
+            value={newMedicationPlan}
+            onChange={(e) => {
+              setMedication(e.target.value);
+            }}
+          />
+        ) : (
+          data.medicationPlan
+        )}
+      </div>
+      <div className="wrapper">
+        <div className="com-container">
+          {edit && (
+            <>
+              {" "}
+              <div style={{ fontSize: "30px", color: "blue" }}>
+                Edit more details
               </div>
-            </div>
+              <textarea
+                cols={120}
+                rows={15}
+                placeholder="Edit more details here....."
+                value={newDetail}
+                onChange={(e) => {
+                  setNewDetail(e.target.value);
+                }}
+              ></textarea>
+            </>
+          )}
+        </div>
+        <div className="details">
+          <div className="more">More details</div>
+          <div className="cotent" style={{ textAlign: "center" }}>
+            {data.detail}
           </div>
-          <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
-            {err}
-          </span>
-          <div className="btns">
-            {/* <div
+        </div>
+      </div>
+      <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
+        {err}
+      </span>
+      <div className="btns">
+        {/* <div
           className="btn"
           onClick={() => {
             dispatch(getCount(null));

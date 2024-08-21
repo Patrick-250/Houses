@@ -82,14 +82,14 @@ const Header = () => {
         />
       </Link>
       <div
-        style={{ color: "black", fontFamily: "sans-serif", fontSize: "30px" }}
+        style={{ color: "#6889bf", fontFamily: "sans-serif", fontSize: "30px" }}
       >
         {count ? `Room ${count}` : ""}
       </div>
       <div
         style={{
-          color: "black",
-          fontFamily: "sans-serif",
+          color: "#6889bf",
+        fontStyle: "oblique",
           fontSize: "30px",
           fontWeight: "bold",
         }}
@@ -98,7 +98,7 @@ const Header = () => {
       </div>
       {token && (
         <div className="rp">
-          <div className="log" style={{ color: "black", fontStyle: "oblique" }}>
+          <div className="log" style={{ color: "#7b9dbc", fontStyle: "oblique" }}>
             Hi {name},<br />
             Welcome
           </div>

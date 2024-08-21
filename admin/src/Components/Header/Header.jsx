@@ -74,7 +74,7 @@ const Header = () => {
           justifyContent: "center",
         }}
       >
-        <img
+        <img className="logo"
           src={logo}
           alt="QLI logo"
           style={{
@@ -82,6 +82,7 @@ const Header = () => {
             height: "30px",
             cursor: "pointer",
             color: "black",
+          
           }}
         />
       </Link>
@@ -91,9 +92,10 @@ const Header = () => {
           fontFamily: "sans-serif",
           fontSize: "30px",
           fontWeight: "bold",
+          
         }}
       >
-        Administrator Pannel
+        Administrator Panel
       </div>
       <div
         style={{
@@ -108,14 +110,14 @@ const Header = () => {
       {token && (
         <div className="add">
           <Link to={"/Register"}>
-            <TiUserAdd style={{ fontSize: "35px", cursor: "pointer" }} />
+            <TiUserAdd className="icon" style={{ fontSize: "50px", cursor: "pointer",color:"131b23"}}/>
           </Link>
         </div>
       )}
 
       {token && (
         <div className="rp">
-          <div className="log" style={{ color: "black", fontStyle: "oblique" }}>
+          <div className="log" style={{ color: "black", }}>
             Hi {name},<br />
             Welcome
           </div>

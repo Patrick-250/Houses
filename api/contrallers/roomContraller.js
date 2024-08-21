@@ -53,9 +53,10 @@ const updateRoom = asyncHandler(async (req, res) => {
       new: true,
     });
     res.status(200).json(updatedRoom);
+    
   } else {
     res.status(400).json({
-      err: "Sorry! you can't update this room, because you don't belong to this house",
+      err: "Sorry! you can't update this room, because you don't have edit capabilities on this house. contact the houses admin for more info",
     });
   }
   if (!room) {

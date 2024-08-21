@@ -1,5 +1,5 @@
 .header {
-  background: rgba(255, 255, 255, 0.2);
+  background: #3e4a47;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -28,15 +28,15 @@
 }
 
 .out {
-  border: 2px solid red;
+  border: 2px solid #727e8a;
   border-radius: 5px;
-  color: red;
+  color: #727e8a;
   padding: 10px;
-  font-size: 16px;
+  font-size: 26px;
   cursor: pointer;
 }
 .out:hover {
-  background-color: rgb(87, 85, 85);
+  background-color: #7b9dbc;
   color:white;
   border:rgb(87, 85, 85) ;
 }

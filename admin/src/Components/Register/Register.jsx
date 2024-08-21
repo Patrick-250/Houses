@@ -50,6 +50,7 @@ const Register = () => {
           <input
             type="text"
             className="input"
+            placeholder="Username"
             value={username}
             onChange={(e) => {
               setUsername(e.target.value);
@@ -59,8 +60,9 @@ const Register = () => {
         <label className="label">
           <div className="nam">Email</div>
           <input
-            type="text"
+            type="Email"
             className="input"
+            placeholder="Email"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -70,8 +72,9 @@ const Register = () => {
         <label className="label">
           <div className="nam">Password</div>
           <input
-            type="text"
+            type="password"
             className="input"
+            placeholder="Password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -81,8 +84,8 @@ const Register = () => {
         <label id="1" style={{ padding: "5px" }}>
           <input
             type="checkbox"
-            value="66a3a4ea688a3fa460f8afed"
-            checked={selectedHouse.includes("66a3a4ea688a3fa460f8afed")}
+            value="66a924b88b45807187bcd065"
+            checked={selectedHouse.includes("66a924b88b45807187bcd065")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -97,9 +100,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="66a3a4f0688a3fa460f8afef"
+            value="66a924c18b45807187bcd067"
             type="checkbox"
-            checked={selectedHouse.includes("66a3a4f0688a3fa460f8afef")}
+            checked={selectedHouse.includes("66a924c18b45807187bcd067")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -114,9 +117,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="66a3a4f5688a3fa460f8aff1"
+            value="66a924c58b45807187bcd069"
             type="checkbox"
-            checked={selectedHouse.includes("66a3a4f5688a3fa460f8aff1")}
+            checked={selectedHouse.includes("66a924c58b45807187bcd069")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -131,9 +134,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="66a3a4fb688a3fa460f8aff3"
+            value="66a924ca8b45807187bcd06b"
             type="checkbox"
-            checked={selectedHouse.includes("66a3a4fb688a3fa460f8aff3")}
+            checked={selectedHouse.includes("66a924ca8b45807187bcd06b")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -148,9 +151,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="66a3a500688a3fa460f8aff5"
+            value="66a924ce8b45807187bcd06d"
             type="checkbox"
-            checked={selectedHouse.includes("66a3a500688a3fa460f8aff5")}
+            checked={selectedHouse.includes("66a924ce8b45807187bcd06d")}
             onChange={handleCheckboxChange}
           />
           <span
@@ -165,9 +168,9 @@ const Register = () => {
         </label>
         <label id="1" style={{ padding: "5px" }}>
           <input
-            value="66a3a505688a3fa460f8aff7"
+            value="66a924d28b45807187bcd06f"
             type="checkbox"
-            checked={selectedHouse.includes("66a3a505688a3fa460f8aff7")}
+            checked={selectedHouse.includes("66a924d28b45807187bcd06f")}
             onChange={handleCheckboxChange}
           />
           <span
