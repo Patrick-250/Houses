@@ -62,10 +62,11 @@ const Header = () => {
     <div className="header">
       <Link
         to={"/"}
+        
         onClick={() => {
           dispatch(getHouseId(null));
           dispatch(getCount(null));
-        }}
+        }} 
         style={{
           width: "50px",
           height: "50px",
@@ -82,13 +83,13 @@ const Header = () => {
         />
       </Link>
       <div
-        style={{ color: "#6889bf", fontFamily: "sans-serif", fontSize: "30px" }}
+        style={{ color: "white", fontFamily: "sans-serif", fontSize: "30px" }}
       >
         {count ? `Room ${count}` : ""}
       </div>
       <div
         style={{
-          color: "#6889bf",
+          color: "white",
         fontStyle: "oblique",
           fontSize: "30px",
           fontWeight: "bold",
@@ -98,7 +99,7 @@ const Header = () => {
       </div>
       {token && (
         <div className="rp">
-          <div className="log" style={{ color: "#7b9dbc", fontStyle: "oblique" }}>
+          <div className="log" style={{ color: "white", fontStyle: "oblique" }}>
             Hi {name},<br />
             Welcome
           </div>

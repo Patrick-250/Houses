@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./RoomDetail.css";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
 import { getCount } from "../../../Redux/counter";
-import { Button, IconButton } from "@mui/material";
-import { useSelector } from "react-redux";
+import { Button } from "@mui/material";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { GiCancel } from "react-icons/gi";
 import { FaEdit } from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+
 const RoomDetail = () => {
   const { token } = useSelector((state) => state.token);
-
   const [edit, setEdit] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const id = location.pathname.split("/")[2];
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  //bearer token to authorize room update
   const newToken = `Bearer ${token}`;
-  //setting user variable that should change on login and logout
   const user = token ? true : false;
-  //update the room info
   const [newDiet, setDiet] = useState("");
   const [newName, setNewName] = useState("");
   const [newTransfer, setTransfer] = useState("");
@@ -34,6 +31,7 @@ const RoomDetail = () => {
   const [file, setFile] = useState(null);
   const [err, setErr] = useState("");
   const PF = "http://localhost:3000/images/";
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     const newInfo = {
@@ -57,12 +55,10 @@ const RoomDetail = () => {
       await axios.put(`http://localhost:3000/api/rooms/${id}`, newInfo, {
         headers: { Authorization: newToken },
       });
-      //detailUpdate();
       setNewDetail("");
       setDiet("");
       setMedication("");
       setTransfer("");
-      //window.location.reload();
       setEdit(false);
     } catch (error) {
       setErr(error.response.data.err);
@@ -87,11 +83,23 @@ const RoomDetail = () => {
     };
     fetchRoom();
   }, [edit]);
-  console.log(data);
-  //login and update button that changes dynamically
+
   let button;
   let update;
+  let back;
   if (!user) {
+    back = (
+      <Button
+        variant="contained"
+        startIcon={<IoIosArrowBack style={{ color: "white" }} />}
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+       back
+      </Button>
+    );
+
     button = (
       <Button
         variant="contained"
@@ -99,13 +107,26 @@ const RoomDetail = () => {
       >
         <Link
           to={"/Login"}
-          style={{ width: "170px", textDecoration: "none", color: "white" }}
+          style={{ width: "170px", textDecoration: "none", color: "white", display: "flex", justifyContent: "center", alignItems: "center" }}
         >
           Login to edit Room
         </Link>
       </Button>
     );
   } else if (user) {
+    if (!edit) {
+      back = (
+        <Button
+          variant="contained"
+          startIcon={<IoIosArrowBack style={{ color: "white" }} />}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+         back
+        </Button>
+      );
+    }
     button = (
       <Button
         variant="contained"
@@ -124,7 +145,6 @@ const RoomDetail = () => {
       <Button
         variant="contained"
         startIcon={<GrDocumentUpdate style={{ color: "white" }} />}
-        // className="upd"
         onClick={handleUpdate}
       >
         Update
@@ -134,7 +154,6 @@ const RoomDetail = () => {
       <Button
         variant="contained"
         startIcon={<GiCancel style={{ color: "red" }} />}
-        // className="link"
         onClick={() => {
           setEdit(false);
         }}
@@ -143,6 +162,7 @@ const RoomDetail = () => {
       </Button>
     );
   }
+
   const renederImage = () => {
     if (edit && file) {
       return (
@@ -151,9 +171,10 @@ const RoomDetail = () => {
     }
   };
   const image = renederImage();
+
   return (
     <div className="room-detail">
-      <div className="info">Room number :{data.number}</div>
+     {/*<div className="info">Room number :{data.number}</div> */} 
       <div className="all">
         <div
           className="profile"
@@ -163,34 +184,9 @@ const RoomDetail = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "space-between",
-            // backgroundColor: "blue",
             gap: "10px",
           }}
         >
-          {" "}
-          <div
-            className="details"
-            style={{
-              maxWidth: "90%",
-              height: "200px",
-            }}
-          >
-            <div className="more" style={{ fontFamily: "sans-serif" }}>
-              More details
-            </div>
-            <div
-              className="cotent"
-              style={{
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <p>{data.detail}</p>
-            </div>
-          </div>
           <img
             src={PF + photo}
             alt="profile"
@@ -201,7 +197,7 @@ const RoomDetail = () => {
               objectFit: "cover",
               border: "5px solid white",
             }}
-          />{" "}
+          />
           {image}
           {edit && (
             <>
@@ -267,7 +263,7 @@ const RoomDetail = () => {
           }}
         >
           <div className="info">
-            Diet:
+            <strong>Diet:</strong>
             {edit ? (
               <input
                 className="in"
@@ -282,7 +278,7 @@ const RoomDetail = () => {
             )}
           </div>
           <div className="info">
-            Transfer:
+            <strong>Transfer:</strong>
             {edit ? (
               <input
                 className="in"
@@ -297,7 +293,7 @@ const RoomDetail = () => {
             )}
           </div>
           <div className="info">
-            Medication plan:
+            <strong>Medication plan:</strong>
             {edit ? (
               <input
                 className="in"
@@ -311,16 +307,9 @@ const RoomDetail = () => {
               data.medicationPlan
             )}
           </div>
-        </div>
-      </div>
-      <div className="wrapper">
-        <div className="com-container">
-          {edit && (
-            <>
-              {" "}
-              <div style={{ fontSize: "30px", color: "blue" }}>
-                Edit more details
-              </div>
+          <div className="info">
+            <strong>More details:</strong>
+            {edit ? (
               <textarea
                 style={{ maxWidth: "400px", maxHeight: "100px" }}
                 cols={120}
@@ -331,21 +320,18 @@ const RoomDetail = () => {
                   setNewDetail(e.target.value);
                 }}
               ></textarea>
-            </>
-          )}
-        </div>
-        {/* <div className="details">
-          <div className="more">More details</div>
-          <div className="cotent" style={{ textAlign: "center" }}>
-            {data.detail}
+            ) : (
+              <p className="info">{data.detail}</p>
+            )}
           </div>
-        </div> */}
+        </div>
       </div>
       <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
         {err}
       </span>
       <div className="btns">
         <div className="btn-upd">{update}</div>
+        <div className="btn">{back}</div>
         <div className="btn">{button}</div>
       </div>
     </div>
