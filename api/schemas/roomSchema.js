@@ -27,6 +27,14 @@ const roomSchema = mongoose.Schema(
       required: true,
       default: "Click edit to add more details",
     },
+    profilePic: {
+      type: String,
+      default: "avator.jpeg",
+    },
+    name: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
