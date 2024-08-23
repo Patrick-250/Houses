@@ -353,3 +353,36 @@ const RoomDetail = () => {
 };
 
 export default RoomDetail;
+// the Calender component
+import moment from "moment";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const localizer = momentLocalizer(moment);
+
+const MyCalendar = () => {
+  const [events, setEvents] = useState([
+    {
+      title: "Meeting",
+      start: new Date(),
+      end: new Date(moment().add(1, "hours").toDate()),
+    },
+    {
+      title: "Another Meeting",
+      start: new Date(moment().add(2, "days").toDate()),
+      end: new Date(moment().add(2, "days").add(2, "hours").toDate()),
+    },
+  ]);
+
+  return (
+    <div>
+      <Calendar
+        localizer={localizer}
+        events={events}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 500 }}
+      />
+    </div>
+  );
+};

@@ -35,6 +35,13 @@ const roomSchema = mongoose.Schema(
       type: String,
       default: "",
     },
+    schedules: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Schedule",
+        default: [],
+      },
+    ],
   },
   { timestamps: true }
 );
