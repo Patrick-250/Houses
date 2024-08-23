@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import roomId, { getId } from "../../../Redux/roomId";
 import { useDispatch, useSelector } from "react-redux";
+
 const RoomsList = () => {
   const [room, setRoom] = useState([]);
   const dispatch = useDispatch();
   const { houseId } = useSelector((state) => state);
   console.log("houseid", houseId.house_id);
+
   useEffect(() => {
     const fetchRooms = async () => {
       if (houseId.house_id) {
@@ -21,23 +23,36 @@ const RoomsList = () => {
     };
     fetchRooms();
   }, [houseId.house_id]);
+
   const Welcome = (
-    <div className="wel" style={{backgroundColor:"#67777e"}}>
-      
-      <span style={{ fontSize: "30px",color:"#8c917e" }}>Welcome to QLI Houses </span>
+    <div className="wel" style={{ Color: "white" }}>
+      <h1 style={{ fontSize: "30px", color: "white" }}>Welcome to QLI Houses </h1>
+     
     </div>
+     
   );
+
   const render = room.map((room) => {
     return <Room room={room} key={room._id} />;
   });
+
   return (
-    <div className="rooms-container">{houseId.house_id ? render : Welcome}</div>
+    <div className="rooms-container">
+      <iframe
+        id="background-video"
+        src="https://www.youtube.com/embed/DNBb86QVons?autoplay=1&mute=1&loop=1&playlist=DNBb86QVons&controls=0&showinfo=0&modestbranding=1"
+        frameBorder="0"
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+      ></iframe>
+      {houseId.house_id ? render : Welcome}
+    </div>
   );
 };
 
 export default RoomsList;
+
 const Room = (props) => {
-  //console.log(props.room);
   const { number, _id } = props.room;
   return (
     <div className="room">
