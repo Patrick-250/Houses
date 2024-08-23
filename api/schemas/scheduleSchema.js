@@ -4,12 +4,12 @@ const scheduleSchema = mongoose.Schema(
     room_id: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "House",
+      ref: "Room",
     },
     title: { type: String, required: true },
     description: { type: String },
-    startTime: { type: Date, required: true },
-    endTime: { type: Date, required: true },
+    start: { type: Date, required: true },
+    end: { type: Date, required: true },
   },
   { timestamps: true }
 );

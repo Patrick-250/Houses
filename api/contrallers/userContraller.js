@@ -78,7 +78,13 @@ const loginUser = asyncHandler(async (req, res) => {
       process.env.SECRET,
       { expiresIn: "1000000000000h" }
     );
-    res.status(200).json({ token: token, id: userExists._id });
+    res
+      .status(200)
+      .json({
+        token: token,
+        id: userExists._id,
+        house_ids: userExists.house_ids,
+      });
   }
 });
 //get all users

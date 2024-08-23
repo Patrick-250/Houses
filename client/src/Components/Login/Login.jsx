@@ -22,11 +22,11 @@ const Login = () => {
         email,
         password,
       });
-      //console.log(res.data.token);
+      console.log("login", res);
       //dispatch(getToken(res.data.token));
       JSON.stringify(sessionStorage.setItem("token", res.data.token));
       JSON.stringify(sessionStorage.setItem("userId", res.data.id));
-
+      JSON.stringify(sessionStorage.setItem("houseIds", res.data.house_ids));
       setEmail("");
       setPassword("");
       window.location.replace("/");

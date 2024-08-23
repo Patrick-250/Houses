@@ -4,20 +4,18 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getCount } from "../../../Redux/counter";
-import { Button } from "@mui/material";
+import { Button, IconButton, Typography } from "@mui/material";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { GiCancel } from "react-icons/gi";
 import { FaEdit } from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-//calender details
-import moment from "moment";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-//end calender configs
 
 const RoomDetail = () => {
   const { token } = useSelector((state) => state.token);
+  const { trigger } = useSelector((state) => state.trigger);
+  const { housesArray } = useSelector((state) => state.housesArray);
+  console.log(housesArray);
   const [edit, setEdit] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,7 +34,6 @@ const RoomDetail = () => {
   const [file, setFile] = useState(null);
   const [err, setErr] = useState("");
   const PF = "http://localhost:3000/images/";
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     const newInfo = {
@@ -183,7 +180,21 @@ const RoomDetail = () => {
     }
   };
   const image = renederImage();
-
+  //get schedules list
+  const [schedule, setSchedule] = useState([]);
+  useEffect(() => {
+    const getSchedules = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/api/schedules/${id}`
+        );
+        setSchedule(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchedules();
+  }, [trigger]);
   return (
     <div className="room-detail">
       {/*<div className="info">Room number :{data.number}</div> */}
@@ -341,6 +352,19 @@ const RoomDetail = () => {
       <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
         {err}
       </span>
+      <div className="schedule">
+        <div className="sc">
+          <MyCalendar />
+          <EventForm />
+        </div>
+        <div className="cm">
+          {" "}
+          <div className="t">Schedules</div>
+          {schedule.map((sch) => {
+            return <Schedules key={sch._id} sch={sch} />;
+          })}
+        </div>
+      </div>
       <div className="btns">
         <div className="btn-upd">{update}</div>
         <div className="btn">{back}</div>
@@ -351,24 +375,34 @@ const RoomDetail = () => {
 };
 
 // the Calender component
+//calender details
+import moment from "moment";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+//end calender configs
 
+//Calender Component
 const MyCalendar = () => {
+  const { trigger } = useSelector((state) => state.trigger);
   const localizer = momentLocalizer(moment);
-  const [events, setEvents] = useState([
-    {
-      title: "Meeting",
-      start: new Date(),
-      end: new Date(moment().add(1, "hours").toDate()),
-    },
-    {
-      title: "Another Meeting",
-      start: new Date(moment().add(2, "days").toDate()),
-      end: new Date(moment().add(2, "days").add(2, "hours").toDate()),
-    },
-  ]);
-
+  const [events, setEvents] = useState([]);
+  const id = location.pathname.split("/")[2];
+  useEffect(() => {
+    const getSchedules = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/api/schedules/${id}`
+        );
+        setEvents(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchedules();
+  }, [trigger]);
   return (
-    <div>
+    <div className="c">
+      <div className="t">Calendar</div>
       <Calendar
         localizer={localizer}
         events={events}
@@ -380,3 +414,207 @@ const MyCalendar = () => {
   );
 };
 export default RoomDetail;
+import { callTrigger } from "../../../Redux/trigger";
+//calender form
+const EventForm = () => {
+  const dispatch = useDispatch();
+  const { trigger } = useSelector((state) => state.trigger);
+  const id = location.pathname.split("/")[2];
+  const { token } = useSelector((state) => state.token);
+  const newToken = `Bearer ${token}`;
+  const [title, setTitle] = useState("");
+  const [start, setStartTime] = useState("");
+  const [end, setEndTime] = useState("");
+  const [description, setDescription] = useState("");
+  const data = { title, start, end, description, room_id: id };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/schedules",
+        data,
+        {
+          headers: { Authorization: newToken },
+        }
+      );
+      setTitle("");
+      setStartTime("");
+      setEndTime("");
+      setDescription("");
+      console.log(res);
+      console.log(id);
+      dispatch(callTrigger(!trigger));
+    } catch (error) {
+      console.log(error);
+      console.log(id);
+    }
+  };
+
+  return (
+    <form
+      className="event-form"
+      onSubmit={handleSubmit}
+      style={{ width: "100%" }}
+    >
+      <div className="form-group">
+        <label>Title</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Start Time</label>
+        <input
+          type="datetime-local"
+          value={start}
+          onChange={(e) => setStartTime(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>End Time</label>
+        <input
+          type="datetime-local"
+          value={end}
+          onChange={(e) => setEndTime(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Description</label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
+      </div>
+      <button type="submit">Add Schedule</button>
+    </form>
+  );
+};
+
+//Schedule Component
+import { RiDeleteBin5Line } from "react-icons/ri";
+const Schedules = (props) => {
+  //console.log(props.sch);
+  const { trigger } = useSelector((state) => state.trigger);
+  const { token } = useSelector((state) => state.token);
+  const newToken = `Bearer ${token}`;
+  const dispatch = useDispatch();
+  const id = location.pathname.split("/")[2];
+  const [title, setTitle] = useState("");
+  const [start, setStartTime] = useState("");
+  const [end, setEndTime] = useState("");
+  const [description, setDescription] = useState("");
+  const [active, setActive] = useState(false);
+  const data = { title, start, end, description, room_id: id };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.put(
+      `http://localhost:3000/api/schedules/${props.sch._id}`,
+      data,
+      {
+        headers: { Authorization: newToken },
+      }
+    );
+    setTitle("");
+    setStartTime("");
+    setEndTime("");
+    setDescription("");
+    dispatch(callTrigger(!trigger));
+    setActive((prev) => !prev);
+  };
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:3000/api/schedules/${props.sch._id}`,
+        {
+          headers: { Authorization: newToken },
+        }
+      );
+      dispatch(callTrigger(!trigger));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <div
+      className="items"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "10px",
+        justifyContent: "center",
+        padding: "15px",
+        alignSelf: "flex-start",
+      }}
+    >
+      <div className="item">
+        <Typography variant="h5">{props.sch.title}</Typography>
+        <div
+          style={{
+            width: "150px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <IconButton
+            onClick={() => {
+              setActive((prev) => !prev);
+            }}
+          >
+            <FaEdit />
+          </IconButton>
+          <IconButton onClick={handleDelete}>
+            <RiDeleteBin5Line />
+          </IconButton>
+        </div>
+      </div>
+      <form
+        className="me"
+        onSubmit={handleSubmit}
+        style={{ display: active ? "inline" : "none" }}
+      >
+        <div className="form-group">
+          <label>Title</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Start Time</label>
+          <input
+            type="datetime-local"
+            value={start}
+            onChange={(e) => setStartTime(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>End Time</label>
+          <input
+            type="datetime-local"
+            value={end}
+            onChange={(e) => setEndTime(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
+        </div>
+        <Button type="submit">Upadte Schedule</Button>
+      </form>
+    </div>
+  );
+};

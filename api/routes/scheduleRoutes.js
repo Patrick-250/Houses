@@ -8,7 +8,7 @@ const {
 } = require("../contrallers/scheduleContraller");
 const authHandler = require("../middleware/auth");
 //router.use(authHandler);
-router.route("/").post(createSchedule);
+router.route("/").post(authHandler, createSchedule);
 router
   .route("/:id")
   .get(getRoomSchedules)
