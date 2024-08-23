@@ -14,8 +14,9 @@ import { IoIosArrowBack } from "react-icons/io";
 const RoomDetail = () => {
   const { token } = useSelector((state) => state.token);
   const { trigger } = useSelector((state) => state.trigger);
-  const { housesArray } = useSelector((state) => state.housesArray);
-  console.log(housesArray);
+  const { housesArray } = useSelector((state) => state);
+  const houseId = JSON.parse(sessionStorage.getItem("houseId"));
+  console.log(housesArray.userHouse.includes(houseId));
   const [edit, setEdit] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -352,19 +353,22 @@ const RoomDetail = () => {
       <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
         {err}
       </span>
-      <div className="schedule">
-        <div className="sc">
-          <MyCalendar />
-          <EventForm />
+      {housesArray.userHouse.includes(houseId) && (
+        <div className="schedule">
+          <div className="sc">
+            <MyCalendar />
+            <EventForm />
+          </div>
+          <div className="cm">
+            {" "}
+            <div className="t">Schedules</div>
+            {schedule.map((sch) => {
+              return <Schedules key={sch._id} sch={sch} />;
+            })}
+          </div>
         </div>
-        <div className="cm">
-          {" "}
-          <div className="t">Schedules</div>
-          {schedule.map((sch) => {
-            return <Schedules key={sch._id} sch={sch} />;
-          })}
-        </div>
-      </div>
+      )}
+
       <div className="btns">
         <div className="btn-upd">{update}</div>
         <div className="btn">{back}</div>

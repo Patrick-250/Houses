@@ -5,8 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { getHouseId } from "../../../Redux/houseID";
 import { getCount } from "../../../Redux/counter";
-import logo from "../../assets/images/logo.png"; 
-
+import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const Header = () => {
   const { houseId } = useSelector((state) => state);
   const [name, setName] = useState("");
   const [house, setHouse] = useState("");
-  console.log("houseid", houseId);
+  // console.log("houseid", houseId);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
@@ -56,17 +55,16 @@ const Header = () => {
     }
   }, [houseId.house_id]);
 
-  console.log(house);
+  // console.log(house);
 
   return (
     <div className="header">
       <Link
         to={"/"}
-        
         onClick={() => {
           dispatch(getHouseId(null));
           dispatch(getCount(null));
-        }} 
+        }}
         style={{
           width: "50px",
           height: "50px",
@@ -77,9 +75,14 @@ const Header = () => {
         }}
       >
         <img
-         src={logo}
+          src={logo}
           alt="QLI logo"
-          style={{ width: "190px", height: "30px", cursor: "pointer", color: "black" }}
+          style={{
+            width: "190px",
+            height: "30px",
+            cursor: "pointer",
+            color: "black",
+          }}
         />
       </Link>
       <div
@@ -90,7 +93,7 @@ const Header = () => {
       <div
         style={{
           color: "white",
-        fontStyle: "oblique",
+          fontStyle: "oblique",
           fontSize: "30px",
           fontWeight: "bold",
         }}

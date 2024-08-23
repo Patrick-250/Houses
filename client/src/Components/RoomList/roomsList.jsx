@@ -9,7 +9,7 @@ const RoomsList = () => {
   const [room, setRoom] = useState([]);
   const dispatch = useDispatch();
   const { houseId } = useSelector((state) => state);
-  console.log("houseid", houseId.house_id);
+  // console.log("houseid", houseId.house_id);
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -18,7 +18,7 @@ const RoomsList = () => {
           `http://localhost:3000/api/rooms/house/${houseId.house_id}`
         );
         setRoom(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       }
     };
     fetchRooms();
@@ -26,10 +26,10 @@ const RoomsList = () => {
 
   const Welcome = (
     <div className="wel" style={{ Color: "white" }}>
-      <h1 style={{ fontSize: "30px", color: "white" }}>Welcome to QLI Houses </h1>
-     
+      <h1 style={{ fontSize: "30px", color: "white" }}>
+        Welcome to QLI Houses{" "}
+      </h1>
     </div>
-     
   );
 
   const render = room.map((room) => {
@@ -55,7 +55,12 @@ export default RoomsList;
 const Room = (props) => {
   const { number, _id } = props.room;
   return (
-    <div className="room">
+    <div
+      className="room"
+      onClick={() => {
+        dispatch(getHouseId(houseId.house_id));
+      }}
+    >
       <Link
         to={`/detail/${_id}`}
         className="link"

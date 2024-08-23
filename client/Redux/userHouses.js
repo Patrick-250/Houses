@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 const userHouseSlice = createSlice({
-  name: "userId",
+  name: "userHoueIds",
   initialState: {
-    userHouse: sessionStorage.getItem("houseIds"),
+    userHouse: JSON.parse(sessionStorage.getItem("houseIds")),
   },
   reducers: {
-    getUserId: (state, action) => {
+    setHouse: (state, action) => {
       state.userId = action.payload;
     },
   },
 });
-export const { getUserId } = userHouseSlice.actions;
+export const { setHouse } = userHouseSlice.actions;
 export default userHouseSlice.reducer;

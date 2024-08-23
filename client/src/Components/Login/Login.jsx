@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../../Redux/Token";
 import { useSelector } from "react-redux";
+import { setHouse } from "../../../Redux/userHouses";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +14,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.token);
   const { id } = useSelector((state) => state.id);
-  console.log(token, id);
   const handleSubmit = async (e) => {
     e.preventDefault();
     //dispatch({ type: "LOGIN_START" });
@@ -22,11 +22,11 @@ const Login = () => {
         email,
         password,
       });
-      console.log("login", res);
+      // console.log("login", res);
       //dispatch(getToken(res.data.token));
       JSON.stringify(sessionStorage.setItem("token", res.data.token));
       JSON.stringify(sessionStorage.setItem("userId", res.data.id));
-      JSON.stringify(sessionStorage.setItem("houseIds", res.data.house_ids));
+      sessionStorage.setItem("houseIds", JSON.stringify(res.data.house_ids));
       setEmail("");
       setPassword("");
       window.location.replace("/");
