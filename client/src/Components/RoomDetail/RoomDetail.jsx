@@ -79,6 +79,7 @@ const RoomDetail = () => {
         setMedication(res.data.medicationPlan);
         setPhoto(res.data.profilePic);
         setName(res.data.name);
+        setNewName(res.data.name);
         dispatch(getCount(res.data.number));
       } catch (error) {
         console.log(error);
@@ -397,7 +398,13 @@ const MyCalendar = () => {
         const res = await axios.get(
           `http://localhost:3000/api/schedules/${id}`
         );
-        setEvents(res.data);
+        const formattedSchedules = res.data.map((schedule) => ({
+          ...schedule,
+          title: schedule.title,
+          start: new Date(schedule.start), // Ensure Date objects
+          end: new Date(schedule.end), // Ensure Date objects
+        }));
+        setEvents(formattedSchedules);
       } catch (error) {
         console.log(error);
       }
@@ -487,13 +494,13 @@ const EventForm = () => {
           required
         />
       </div>
-      <div className="form-group">
+      {/* <div className="form-group">
         <label>Description</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-      </div>
+      </div> */}
       <button type="submit">Add Schedule</button>
     </form>
   );
@@ -543,6 +550,24 @@ const Schedules = (props) => {
       console.log(error);
     }
   };
+  useEffect(() => {
+    const getSchedules = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/api/schedules/one/${props.sch._id}`
+        );
+        const formattedSchedules = res.data.map((schedule) => ({
+          title: schedule.title,
+          start: new Date(schedule.start), // Ensure Date objects
+          end: new Date(schedule.end), // Ensure Date objects
+        }));
+        setTitle(res.data[0].title);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchedules();
+  }, [trigger]);
   return (
     <div
       className="items"
@@ -568,6 +593,7 @@ const Schedules = (props) => {
         >
           <IconButton
             onClick={() => {
+              dispatch(callTrigger(!trigger));
               setActive((prev) => !prev);
             }}
           >
@@ -610,13 +636,13 @@ const Schedules = (props) => {
             required
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
-        </div>
+        </div> */}
         <Button type="submit">Upadte Schedule</Button>
       </form>
     </div>

@@ -5,6 +5,7 @@ const {
   getRoomSchedules,
   updateShedule,
   deleteSchedule,
+  getSchedule,
 } = require("../contrallers/scheduleContraller");
 const authHandler = require("../middleware/auth");
 //router.use(authHandler);
@@ -14,4 +15,5 @@ router
   .get(getRoomSchedules)
   .put(authHandler, updateShedule)
   .delete(authHandler, deleteSchedule);
+router.route("/one/:id").get(getSchedule);
 module.exports = router;

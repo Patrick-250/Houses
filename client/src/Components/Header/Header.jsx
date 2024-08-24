@@ -20,6 +20,7 @@ const Header = () => {
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
+    sessionStorage.setItem("houseIds", JSON.stringify([]));
     window.location.replace("/");
   };
 

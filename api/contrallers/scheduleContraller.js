@@ -5,7 +5,7 @@ const Room = require("../schemas/roomSchema");
 const createSchedule = asyncHandler(async (req, res) => {
   const { title, description, start, end, room_id } = req.body;
   //check the required info
-  if (!title || !description || !start || !end || !room_id) {
+  if (!title || !start || !end || !room_id) {
     res.status(400);
     throw new Error("all fields are required are required");
   }
@@ -35,6 +35,14 @@ const getRoomSchedules = asyncHandler(async (req, res) => {
     res.status(404).json({ err: "there aren't any schedules yet" });
   }
   res.status(200).json(schedules);
+});
+//get a schedules by its id
+const getSchedule = asyncHandler(async (req, res) => {
+  const schedule = await Schedule.find({ _id: req.params.id });
+  if (!schedule) {
+    res.status(404).json({ err: "schedule not found" });
+  }
+  res.status(200).json(schedule);
 });
 
 //upadate a Schedule
@@ -85,4 +93,5 @@ module.exports = {
   getRoomSchedules,
   updateShedule,
   deleteSchedule,
+  getSchedule,
 };
