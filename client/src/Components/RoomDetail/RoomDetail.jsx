@@ -16,7 +16,9 @@ const RoomDetail = () => {
   const { trigger } = useSelector((state) => state.trigger);
   const { housesArray } = useSelector((state) => state);
   const houseId = JSON.parse(sessionStorage.getItem("houseId"));
-  console.log(housesArray.userHouse.includes(houseId));
+  const show = housesArray.userHouse || [];
+  const sound = new Audio("/sounds/click.mp3");
+  //console.log(housesArray.userHouse.includes(houseId));
   const [edit, setEdit] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,6 +39,7 @@ const RoomDetail = () => {
   const PF = "http://localhost:3000/images/";
   const handleUpdate = async (e) => {
     e.preventDefault();
+    sound.play();
     const newInfo = {
       transfer: newTransfer,
       detail: newDetail,
@@ -106,6 +109,7 @@ const RoomDetail = () => {
 
     button = (
       <Button
+        onClick={sound.play()}
         variant="contained"
         startIcon={<IoIosLogIn style={{ color: "white" }} />}
       >
@@ -131,6 +135,7 @@ const RoomDetail = () => {
           variant="contained"
           startIcon={<IoIosArrowBack style={{ color: "white" }} />}
           onClick={() => {
+            sound.play();
             navigate(-1);
           }}
         >
@@ -145,6 +150,7 @@ const RoomDetail = () => {
         className="link"
         onClick={() => {
           setEdit(true);
+          sound.play();
         }}
       >
         Edit
@@ -166,6 +172,7 @@ const RoomDetail = () => {
         variant="contained"
         startIcon={<GiCancel style={{ color: "red" }} />}
         onClick={() => {
+          sound.play();
           setEdit(false);
         }}
       >
@@ -354,7 +361,7 @@ const RoomDetail = () => {
       <span style={{ alignSelf: "center", color: "red", fontSize: "20px" }}>
         {err}
       </span>
-      {housesArray.userHouse.includes(houseId) && (
+      {show.includes(houseId) && (
         <div className="schedule">
           <div className="sc">
             <MyCalendar />

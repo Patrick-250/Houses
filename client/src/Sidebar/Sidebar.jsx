@@ -14,6 +14,7 @@ import axios from "axios";
 import { getHouseId } from "../../Redux/houseID";
 
 const Sidebar = (props) => {
+  const sound = new Audio("/sounds/click.mp3");
   const dispatch = useDispatch();
   const location = useLocation();
   const { houseId } = useSelector((state) => state);
@@ -63,6 +64,7 @@ const Sidebar = (props) => {
       <li key={x._id}>
         <Link
           onClick={() => {
+            sound.play();
             dispatch(getHouseId(x._id));
             sessionStorage.setItem("houseId", JSON.stringify(x._id));
             setSelectedHouse(x._id);

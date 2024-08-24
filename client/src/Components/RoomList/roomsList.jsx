@@ -53,6 +53,7 @@ const RoomsList = () => {
 export default RoomsList;
 
 const Room = (props) => {
+  const sound = new Audio("/sounds/click.mp3");
   const { number, _id } = props.room;
   return (
     <div
@@ -66,6 +67,7 @@ const Room = (props) => {
         className="link"
         state={{ room: props.room }}
         onClick={() => {
+          sound.play();
           dispatch(getId(_id));
         }}
       >
