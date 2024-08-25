@@ -109,7 +109,7 @@ const RoomDetail = () => {
 
     button = (
       <Button
-        onClick={sound.play()}
+        // onClick={sound.play()}
         variant="contained"
         startIcon={<IoIosLogIn style={{ color: "white" }} />}
       >
