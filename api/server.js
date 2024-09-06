@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const multer = require("multer");
 const cors = require("cors");
+const morgan = require("morgan"); // Add this line
 const userRoutes = require("./routes/userRoutes");
 const roomRoutes = require("./routes/roomRoutes");
 const houseRoutes = require("./routes/houseRoutes");
@@ -12,12 +13,15 @@ dataBase();
 const dotenv = require("dotenv").config();
 const app = express();
 app.use(cors());
+app.use(morgan('combined')); // Add this line
+
 const port = process.env.PORT || 3001;
 const host = "0.0.0.0";
 
 app.listen(port, host, () => {
   console.log(`app listening on port ${port}`);
 });
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
@@ -30,6 +34,7 @@ const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("file uploaded succesfuly");
 });
+
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/rooms", roomRoutes);

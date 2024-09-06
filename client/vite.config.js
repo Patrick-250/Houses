@@ -7,5 +7,15 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000 // Adjust the chunk size limit here
   }
 })

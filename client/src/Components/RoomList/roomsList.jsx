@@ -15,7 +15,7 @@ const RoomsList = () => {
     const fetchRooms = async () => {
       if (houseId.house_id) {
         const res = await axios.get(
-          `http://localhost:3000/api/rooms/house/${houseId.house_id}`
+          `http://172.16.161.40:3000/api/rooms/house/${houseId.house_id}`
         );
         setRoom(res.data);
         // console.log(res.data);
@@ -25,12 +25,17 @@ const RoomsList = () => {
   }, [houseId.house_id]);
 
   const Welcome = (
-    <div className="wel" style={{ Color: "white" }}>
-      <h1 style={{ fontSize: "30px", color: "white" }}>
-        Welcome to QLI Houses{" "}
-      </h1>
-    </div>
-  );
+   
+        <div className="wel" style={{ Color: "white" }}>
+          <h1 style={{ fontSize: "20px", color: "white" }}>
+            Welcome to QLI Houses
+          </h1>
+        
+         
+        </div>
+        
+    
+    );
 
   const render = room.map((room) => {
     return <Room room={room} key={room._id} />;

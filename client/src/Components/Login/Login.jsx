@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     //dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://localhost:3000/api/users/login", {
+      const res = await axios.post("http://172.16.161.40:3000/api/users/login", {
         email,
         password,
       });

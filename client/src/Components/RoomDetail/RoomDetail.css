@@ -34,6 +34,11 @@ body,
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+
+}
+.btn-upd:hover{
+  background-color: #9ddcf9;
+  
 }
 .schedule {
   display: flex;
@@ -106,7 +111,7 @@ body,
 }
 
 .event-form button:hover {
-  background-color: #0056b3;
+  background-color: #6889bf;
 }
 .schedule {
   display: flex;

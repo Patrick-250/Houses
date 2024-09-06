@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(247, 244, 250);
   padding-bottom: 20px;
+background-color:#1e596e;
   width: 60%;
   margin-top: 20px;
 }
