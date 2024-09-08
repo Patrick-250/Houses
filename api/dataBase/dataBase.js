@@ -4,7 +4,7 @@ const dataBase = async () => {
   try {
     const connect = await mongoose.connect(process.env.CONNECTION_STRING);
     console.log(
-      "database connected",
+      "connected to houses database",
       connect.connection.name,
       connect.connection.host
     );

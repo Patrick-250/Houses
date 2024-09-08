@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { getHouseId } from "../../../Redux/houseID";
 import { getCount } from "../../../Redux/counter";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logoQLI.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const Header = () => {
       const getUser = async () => {
         try {
           const res = await axios.get(
-            `http://172.16.161.40:3000/api/users/${userId}`
+            `http://localhost:3000/api/users/${userId}`
           );
           setName(res.data.username);
         } catch (error) {
@@ -47,7 +47,7 @@ const Header = () => {
       const getHouse = async () => {
         try {
           const res = await axios.get(
-            `http://172.16.161.40:3000/api/houses/${houseId.house_id}`
+            `http://localhost:3000/api/houses/${houseId.house_id}`
           );
           setHouse(res.data.name);
         } catch (error) {
