@@ -40,22 +40,24 @@ background-color:#1e596e;
 .input:focus {
   outline: none;
 }
-h2 {
-  font-size: 60px;
-  color: #808080;
+p{
+  font-size: 26px;
+  color: #a1a1a4;
 }
 .btn-register {
-  background-color: #808080;
+  background-color: #6cb33f;
   width: 40%;
   text-align: center;
   margin: 10px;
   padding: 10px;
   font-size: 20px;
+ 
   color: white;
   cursor: pointer;
 }
 .btn-register:hover {
-  background-color: #96b0c9;
+  background-color: #295915;
+  border-radius: 30px;
   transition: all 0.5s ease;
 }
 span {

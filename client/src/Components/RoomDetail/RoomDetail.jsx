@@ -275,7 +275,7 @@ const RoomDetail = () => {
           ) : (
             <span
               style={{
-                fontFamily: "sans-serif",
+                fontFamily: "gotham",
                 color: "black",
                 fontSize: "25px",
                 fontWeight: "bold",

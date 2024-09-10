@@ -27,7 +27,7 @@ const RoomsList = () => {
   const Welcome = (
    
         <div className="wel" style={{ Color: "white" }}>
-          <h1 style={{ fontSize: "20px", color: "white" }}>
+          <h1 style={{ fontSize: "20px", color: "#1e596e" }}>
             Welcome to QLI Houses
           </h1>
         
@@ -43,13 +43,6 @@ const RoomsList = () => {
 
   return (
     <div className="rooms-container">
-      <iframe
-        id="background-video"
-        src="https://www.youtube.com/embed/DNBb86QVons?autoplay=1&mute=1&loop=1&playlist=DNBb86QVons&controls=0&showinfo=0&modestbranding=1"
-        frameBorder="0"
-        allow="autoplay; encrypted-media"
-        allowFullScreen
-      ></iframe>
       {houseId.house_id ? render : Welcome}
     </div>
   );

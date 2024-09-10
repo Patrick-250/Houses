@@ -24,18 +24,20 @@
 }
 
 .out {
-  border: 2px solid #727e8a;
-  border-radius: 20px;
+ 
+  border-radius: 10px;
   color: white;
+  border: #449aba;
   padding: 10px;
   font-size: 26px;
   cursor: pointer;
-  background-color:#a1a1a4 ;
+  background-color:#449aba ;
 }
 .out:hover {
-  background-color: black;
+  background-color: #1e596e;
   color:white;
-  border:rgb(87, 85, 85) ;
+  border:#1e596e ;
+  border-radius: 30px;
 }
 .namex {
   font-style: italic;
