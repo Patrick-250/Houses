@@ -27,7 +27,7 @@ const RoomsList = () => {
   const Welcome = (
     <div className="wel" style={{ Color: "white" }}>
       <h1 style={{ fontSize: "20px", color: "#1e596e" }}>
-        Welcome to QLI Houses
+        Welcome to QLI Houses.
       </h1>
     </div>
   );
