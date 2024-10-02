@@ -25,26 +25,19 @@ const RoomsList = () => {
   }, [houseId.house_id]);
 
   const Welcome = (
-   
-        <div className="wel" style={{ Color: "white" }}>
-          <h1 style={{ fontSize: "20px", color: "#1e596e" }}>
-            Welcome to QLI Houses
-          </h1>
-        
-         
-        </div>
-        
-    
-    );
+    <div className="wel" style={{ Color: "white" }}>
+      <h1 style={{ fontSize: "20px", color: "#1e596e" }}>
+        Welcome to QLI Houses.
+      </h1>
+    </div>
+  );
 
   const render = room.map((room) => {
     return <Room room={room} key={room._id} />;
   });
 
   return (
-    <div className="rooms-container">
-      {houseId.house_id ? render : Welcome}
-    </div>
+    <div className="rooms-container">{houseId.house_id ? render : Welcome}</div>
   );
 };
 
