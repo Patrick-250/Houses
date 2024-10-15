@@ -15,7 +15,7 @@ const RoomsList = () => {
     const fetchRooms = async () => {
       if (houseId.house_id) {
         const res = await axios.get(
-          `http://172.16.161.30:3000/api/rooms/house/${houseId.house_id}`
+          `http://localhost:3000/api/rooms/house/${houseId.house_id}`
         );
         setRoom(res.data);
         // console.log(res.data);
@@ -37,9 +37,7 @@ const RoomsList = () => {
   });
 
   return (
-    <div className="rooms-container">
-      {houseId.house_id ? render : Welcome}
-    </div>
+    <div className="rooms-container">{houseId.house_id ? render : Welcome}</div>
   );
 };
 

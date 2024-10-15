@@ -20,7 +20,7 @@ const app = express();
 
 // Middleware setup
 app.use(cors());
-app.use(morgan('combined'));
+app.use(morgan("combined"));
 app.use(express.json());
 
 // File upload setup
@@ -38,11 +38,11 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 });
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, "build")));
 
 // Explicitly set MIME type for JavaScript files
-app.get('*.js', (req, res, next) => {
-  res.set('Content-Type', 'application/javascript');
+app.get("*.js", (req, res, next) => {
+  res.set("Content-Type", "application/javascript");
   next();
 });
 
@@ -58,8 +58,8 @@ app.use("/api/schedules", scheduleRoutes);
 app.use("/api/admin", adminRoutes);
 
 // Serve the React app for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // Server setup

@@ -36,7 +36,7 @@ const RoomDetail = () => {
   const [name, setName] = useState("");
   const [file, setFile] = useState(null);
   const [err, setErr] = useState("");
-  const PF = "http://172.16.161.30:3000/images/";
+  const PF = "http://localhost:3000/images/";
   const handleUpdate = async (e) => {
     e.preventDefault();
     sound.play();
@@ -54,11 +54,11 @@ const RoomDetail = () => {
       data.append("file", file);
       newInfo.profilePic = filename;
       try {
-        await axios.post("http://172.16.161.30:3000/api/upload", data);
+        await axios.post("http://localhost:3000/api/upload", data);
       } catch (error) {}
     }
     try {
-      await axios.put(`http://172.16.161.30:3000/api/rooms/${id}`, newInfo, {
+      await axios.put(`http://localhost:3000/api/rooms/${id}`, newInfo, {
         headers: { Authorization: newToken },
       });
       setNewDetail("");
@@ -74,7 +74,7 @@ const RoomDetail = () => {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const res = await axios.get(`http://172.16.161.30:3000/api/rooms/${id}`);
+        const res = await axios.get(`http://localhost:3000/api/rooms/${id}`);
         setData(res.data);
         setDiet(res.data.diet);
         setTransfer(res.data.transfer);
@@ -102,9 +102,10 @@ const RoomDetail = () => {
         // onClick={() => {
         //   navigate(-1);
         // }}
-        
       >
-        <Link to="/" style={{color:"white"}}>back</Link>
+        <Link to="/" style={{ color: "white" }}>
+          back
+        </Link>
       </Button>
     );
 
@@ -196,7 +197,7 @@ const RoomDetail = () => {
     const getSchedules = async () => {
       try {
         const res = await axios.get(
-          `http://172.16.161.30:3000/api/schedules/${id}`
+          `http://localhost:3000/api/schedules/${id}`
         );
         setSchedule(res.data);
       } catch (error) {
@@ -404,7 +405,7 @@ const MyCalendar = () => {
     const getSchedules = async () => {
       try {
         const res = await axios.get(
-          `http://172.16.161.30:3000/api/schedules/${id}`
+          `http://localhost:3000/api/schedules/${id}`
         );
         const formattedSchedules = res.data.map((schedule) => ({
           ...schedule,
@@ -450,7 +451,7 @@ const EventForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://172.16.161.30:3000/api/schedules",
+        "http://localhost:3000/api/schedules",
         data,
         {
           headers: { Authorization: newToken },
@@ -532,7 +533,7 @@ const Schedules = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.put(
-      `http://172.16.161.30:3000/api/schedules/${props.sch._id}`,
+      `http://localhost:3000/api/schedules/${props.sch._id}`,
       data,
       {
         headers: { Authorization: newToken },
@@ -548,7 +549,7 @@ const Schedules = (props) => {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `http://172.16.161.30:3000/api/schedules/${props.sch._id}`,
+        `http://localhost:3000/api/schedules/${props.sch._id}`,
         {
           headers: { Authorization: newToken },
         }
@@ -562,7 +563,7 @@ const Schedules = (props) => {
     const getSchedules = async () => {
       try {
         const res = await axios.get(
-          `http://172.16.161.30:3000/api/schedules/one/${props.sch._id}`
+          `http://localhost:3000/api/schedules/one/${props.sch._id}`
         );
         const formattedSchedules = res.data.map((schedule) => ({
           title: schedule.title,

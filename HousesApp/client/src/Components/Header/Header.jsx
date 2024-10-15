@@ -31,7 +31,7 @@ const Header = () => {
       const getUser = async () => {
         try {
           const res = await axios.get(
-            `http://172.16.161.30:3000/api/users/${userId}`
+            `http://localhost:3000/api/users/${userId}`
           );
           setName(res.data.username);
         } catch (error) {
@@ -47,7 +47,7 @@ const Header = () => {
       const getHouse = async () => {
         try {
           const res = await axios.get(
-            `http://172.16.161.30:3000/api/houses/${houseId.house_id}`
+            `http://localhost:3000/api/houses/${houseId.house_id}`
           );
           setHouse(res.data.name);
         } catch (error) {
@@ -68,7 +68,6 @@ const Header = () => {
           dispatch(getHouseId(null));
           dispatch(getCount(null));
           window.location.replace("/");
-          
         }}
         style={{
           width: "50px",
@@ -90,9 +89,7 @@ const Header = () => {
           }}
         />
       </Link>
-      <div
-        style={{ color: "black", fontFamily: "gotham"}}
-      >
+      <div style={{ color: "black", fontFamily: "gotham" }}>
         {count ? `Room ${count}` : ""}
       </div>
       <div
