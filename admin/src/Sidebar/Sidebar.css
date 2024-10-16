@@ -1,0 +1,244 @@
+/** @format */
+.imgx {
+  width: 40px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid blue;
+}
+#sidebar {
+  flex: 2;
+  position: fixed;
+  top: 100px;
+  /* background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); */
+  background-color: rgb(49, 49, 50);
+  z-index: 1;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.5s ease;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 5px 10px;
+  margin-left: 15px;
+  margin-top: 20px;
+  max-height: 80vh;
+}
+#sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#sidebar ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+#sidebar.active {
+  width: 250px;
+}
+.icon {
+  font-size: calc(0.6rem + 2vw);
+  cursor: pointer;
+  color: rgb(253, 252, 251);
+}
+.logo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.x {
+  display: none;
+}
+.icon {
+  color: rgb(243, 243, 248);
+  align-self: center;
+}
+.tool {
+  margin-left: 40px;
+  opacity: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: blanchedalmond;
+  background-color: rgb(41, 41, 43);
+}
+#sidebar ul li:hover .tool {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+li .me:hover {
+  color:black;
+}
+.name {
+  display: none;
+}
+#sidebar.active .x {
+  display: inline;
+}
+#sidebar.active .tool {
+  display: none;
+}
+hr {
+  background-color: rgb(54, 32, 136);
+  border: none;
+  height: 2px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+#sidebar.active ul {
+  padding: 0;
+  width: 70%;
+}
+#sidebar.active ul li {
+  justify-content: space-between;
+}
+#sidebar.active ul li .me {
+  align-self: flex-start;
+  margin-left: 0;
+}
+#sidebar.active .user .name {
+  display: flex;
+  font-size: calc(1rem + 0.4vw);
+  font-weight: bold;
+  color: rgb(17, 17, 17);
+  margin-left: 15px;
+  transition: all 0.7s;
+}
+#sidebar.active .user {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 25px;
+}
+.p {
+  font-size: 17px;
+  font-weight: 400;
+  color: white;
+}
+.o {
+  color: rgb(217, 217, 222);
+  font-size: calc(0.7rem + 1.5vw);
+  font-weight: bold;
+}
+@media screen and (max-width: 510px) {
+  #sidebar.active {
+    width: 50%;
+  }
+  .p {
+    display: none;
+  }
+  .o {
+    display: none;
+  }
+  #sidebar {
+    height: 85%;
+    margin-left: 0;
+    border-radius: 0;
+    top: 60px;
+    width: 10%;
+  }
+  .user {
+    display: none;
+  }
+  .img {
+    display: none;
+  }
+  #sidebar .x {
+    display: none;
+  }
+  #sidebar .me {
+    margin-right: 115px;
+  }
+  .tool {
+    display: none;
+  }
+  .me {
+    margin-right: 15px;
+  }
+  #sidebar.active .me {
+    margin-right: 0;
+  }
+}
+/* #sidebar .me {
+  margin-left: 115px;
+} */
+@media screen and(max-width:260px) {
+  .logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  #sidebar {
+    height: 60%;
+    top: 120px;
+  }
+}
+.x {
+  color: beige;
+}
+.g {
+  transition: all 0.9s;
+}
+.u {
+  /* margin-right: 15px; */
+  font-size: 20px;
+}
+.search {
+  background: transparent;
+  border: 2px solid rgb(242, 244, 247);
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+}
+.search:focus {
+  outline: none;
+}
+.men {
+  overflow: scroll;
+}
+hr {
+  margin-bottom: 20px;
+}
+/* Total scrollbar width */
+::-webkit-scrollbar {
+  width: 12px; /* Change width to desired size */
+  display: none;
+}
+
+/* Background of the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color */
+  display: none;
+}
+
+/* Scrollbar handle (the part you can drag) */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Handle color */
+  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #f1f1f1; /* Space around handle */
+  display: none;
+}
+
+/* Hover effect for the handle */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker color on hover */
+  display: none;
+}
