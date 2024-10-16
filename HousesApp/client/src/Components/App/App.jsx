@@ -7,6 +7,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "../../Sidebar/Sidebar";
+import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,10 +19,10 @@ function App() {
         <div className="ct">
           <Sidebar />
           <Routes>
-            <Route path="/" element={<RoomsList />} />
+            <Route path="/" element={<WelcomeScreen />} />
             <Route path="/detail/:roomId" element={<RoomDetail />} />
             <Route path="/login" element={<Login />} />
-          
+            <Route path="/rooms" element={<RoomsList />} />
           </Routes>
         </div>
       </Router>

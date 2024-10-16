@@ -103,7 +103,7 @@ const RoomDetail = () => {
         //   navigate(-1);
         // }}
       >
-        <Link to="/" style={{ color: "white" }}>
+        <Link to={"/rooms"} style={{ color: "white" }}>
           back
         </Link>
       </Button>

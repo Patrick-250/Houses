@@ -45,12 +45,11 @@ const Sidebar = (props) => {
   const mode = !state ? "Light" : "Dark";
   const [data, setData] = useState([]);
 
-  //fetching the houses
+  // Fetching the houses
   useEffect(() => {
     const fetchHouse = async () => {
       try {
         const res = await axios.get("http://localhost:3000/api/houses");
-        // console.log(res.data);
         setData(res.data);
       } catch (error) {
         console.log(error);
@@ -61,8 +60,10 @@ const Sidebar = (props) => {
 
   const render = data.map((x) => {
     return (
-      <li key={x._id}>
+      <li key={x._id} className="sidebar-item">
         <Link
+          to="/rooms"
+          className="sidebar-link"
           onClick={() => {
             sound.play();
             dispatch(getHouseId(x._id));
@@ -72,12 +73,13 @@ const Sidebar = (props) => {
           }}
         >
           <FaHouseChimneyUser className="icon me u" />
+          <div className="x">{x.name}</div>
         </Link>
-        <div className="x">{x.name}</div>
         <div className="tool">{x.name}</div>
       </li>
     );
   });
+
   return (
     <div className={active ? "active" : null} id="sidebar" style={obj}>
       <div className="logo" onClick={toggle}>
