@@ -1,0 +1,242 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+.room-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.all {
+  display: flex;
+  flex: 1;
+  overflow: auto;
+}
+
+.profile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 5px solid white;
+}
+
+.file-input-label {
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: #098e57;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  font-family: sans-serif;
+  margin: 5px;
+}
+
+.profile-name {
+  font-family: gotham;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.btn-upd:hover {
+  background-color: #9ddcf9;
+}
+
+.schedule {
+  display: flex;
+  margin-top: 30px;
+}
+
+.sc {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 3;
+}
+
+.cm {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.c {
+  width: 100%;
+}
+
+.t {
+  font-size: 50px;
+  font-family: sans-serif;
+}
+
+.event-form {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f3ecec;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-form .form-group {
+  margin-bottom: 15px;
+}
+
+.event-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.event-form .form-group input,
+.event-form .form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.event-form .form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.event-form button {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.event-form button:hover {
+  background-color: #6889bf;
+}
+
+.schedule {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #9dc8f7;
+  padding: 5px;
+}
+
+.me {
+  display: flex;
+  flex-direction: column;
+  background-color: #c8c3f8;
+  width: 90%;
+  padding: 6px;
+}
+
+.me .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.me .form-group input {
+  padding: 5px;
+}
+
+.room-detail .info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.room-detail .info strong {
+  min-width: 150px; /* Adjust this value as needed */
+}
+
+.room-detail .in {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.room-detail .name-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.room-detail .textarea {
+  height: 100px; /* Default height */
+  width: 100%; /* Default width */
+  resize: vertical;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.room-detail .wide-textarea {
+  width: 100%; /* Full width when in edit mode */
+  max-height: 300px; /* Maximum height */
+  overflow-y: auto; /* Scrollable */
+}
+
+.room-detail .read-only-textarea {
+  width: 100%; /* Full width */
+  max-height: 300px; /* Maximum height */
+  overflow-y: auto; /* Scrollable */
+  background-color: #f9f9f9; /* Light background color */
+  border: 1px solid #ccc; /* Border */
+  padding: 10px; /* Padding */
+  box-sizing: border-box; /* Box sizing */
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
