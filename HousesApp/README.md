@@ -10,7 +10,7 @@ HousesIpadApp is a web application designed for iPad that allows QLI houses staf
 - **Database:** MongoDB
 -  **Web Server:**:Apache2
 - **Version Control:** Git, GitHub
-- **Deployment:** Local Ubuntu Server
+- **Deployment:** Local windows 2019 Server
 
 
 ## License
