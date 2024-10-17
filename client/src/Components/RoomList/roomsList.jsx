@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from "react";
 import "./roomsList.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import roomId, { getId } from "../../../Redux/roomId";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +10,7 @@ const RoomsList = () => {
   const [room, setRoom] = useState([]);
   const dispatch = useDispatch();
   const { houseId } = useSelector((state) => state);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -24,6 +24,10 @@ const RoomsList = () => {
     fetchRooms();
   }, [houseId.house_id]);
 
+  const handleBackClick = () => {
+    navigate("/"); 
+  };
+
   const render = room.map((room) => {
     return <Room room={room} key={room._id} />;
   });
@@ -31,6 +35,9 @@ const RoomsList = () => {
   return (
     <div className="rooms-container">
       {houseId.house_id ? render : <WelcomeScreen />}
+      <button onClick={handleBackClick} className="back-button">
+        Back
+      </button>
     </div>
   );
 };
@@ -63,4 +70,4 @@ const Room = (props) => {
       </Link>
     </div>
   );
-};
+}; 

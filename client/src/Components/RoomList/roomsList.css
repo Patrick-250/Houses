@@ -87,3 +87,25 @@ h1 {
   z-index: 1;
   font-family: 'Gotham', sans-serif;
 }
+
+.back-button {
+margin-top: auto;
+  padding: 20px 35px; 
+  background-color: #9ddcf9;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  position: fixed;
+  bottom: 100px;
+  font-size: 15px; 
+border-radius:28px;
+  
+}
+
+.back-button:hover {
+  background-color: #;
+border-radius:40px;
+color:#000000
+
+}
