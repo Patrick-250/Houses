@@ -1,5 +1,4 @@
-
-         import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./RoomDetail.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,11 +8,10 @@ import { Button, Typography } from "@mui/material";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { GiCancel } from "react-icons/gi";
 import { FaEdit } from "react-icons/fa";
-import { IoIosLogIn, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 
 const RoomDetail = () => {
   const { token } = useSelector((state) => state.token);
-  const { trigger } = useSelector((state) => state.trigger);
   const { housesArray } = useSelector((state) => state);
   const houseId = JSON.parse(sessionStorage.getItem("houseId"));
   const show = housesArray.userHouse || [];
@@ -100,94 +98,6 @@ const RoomDetail = () => {
     }
   }, [edit]);
 
-  let button;
-  let update;
-  let back;
-  if (!user) {
-    back = (
-      <Button
-        variant="contained"
-        startIcon={<IoIosArrowBack style={{ color: "white" }} />}
-      >
-        <Link to={"/rooms"} style={{ color: "white" }}>
-          back
-        </Link>
-      </Button>
-    );
-
-    button = (
-      <Button
-        variant="contained"
-        startIcon={<IoIosLogIn style={{ color: "white" }} />}
-      >
-        <Link
-          to={"/Login"}
-          style={{
-            width: "170px",
-            textDecoration: "none",
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Login to edit Room
-        </Link>
-      </Button>
-    );
-  } else if (user) {
-    if (!edit) {
-      back = (
-        <Button
-          variant="contained"
-          startIcon={<IoIosArrowBack style={{ color: "white" }} />}
-          onClick={() => {
-            sound.play();
-            navigate(-1);
-          }}
-        >
-          back
-        </Button>
-      );
-    }
-    button = (
-      <Button
-        variant="contained"
-        startIcon={<FaEdit />}
-        className="link"
-        onClick={() => {
-          setEdit(true);
-          sound.play();
-        }}
-      >
-        Edit
-      </Button>
-    );
-  }
-  if (user && edit) {
-    update = (
-      <Button
-        variant="contained"
-        startIcon={<GrDocumentUpdate style={{ color: "white" }} />}
-        onClick={handleUpdate}
-      >
-        Update
-      </Button>
-    );
-    button = (
-      <Button
-        variant="contained"
-        startIcon={<GiCancel style={{ color: "red" }} />}
-        onClick={() => {
-          sound.play();
-          setEdit(false);
-        }}
-      >
-        Cancel
-      </Button>
-    );
-  }
-
   const renederImage = () => {
     if (edit && file) {
       return (
@@ -197,22 +107,123 @@ const RoomDetail = () => {
   };
   const image = renederImage();
 
+  let button;
+  let update;
+  let back = (
+    <Button
+      sx={{
+        color: "white",
+        backgroundColor: "#449aba",
+        width: "auto",
+        fontSize: "18px",
+        padding: "5px",
+        "&:hover": {
+          backgroundColor: "#1e596e",
+        },
+      }}
+      variant="contained"
+      startIcon={<IoIosArrowBack style={{ color: "white" }} />}
+      onClick={() => {
+        sound.play();
+        navigate(-1);
+      }}
+    >
+      back
+    </Button>
+  );
+
+  if (user) {
+    button = (
+      <Button
+        variant="contained"
+        startIcon={<FaEdit style={{ color: "white" }} />}
+        className="link"
+        onClick={() => {
+          setEdit(true);
+          sound.play();
+        }}
+        sx={{
+          backgroundColor: "#449aba",
+          width: "auto",
+          marginLeft: "auto",
+          marginRight: "auto",
+
+          padding: "5px 10px",
+
+          fontSize: "18px",
+
+          "&:hover": {
+            backgroundColor: "#1e596e",
+          },
+        }}
+      >
+        Edit
+      </Button>
+    );
+  }
+
+  if (user && edit) {
+    update = (
+      <Button
+        variant="contained"
+        startIcon={<GrDocumentUpdate style={{ color: "white" }} />}
+        onClick={handleUpdate}
+        sx={{
+          backgroundColor: "#449aba",
+          width: "auto",
+          marginLeft: "auto",
+          marginRight: "auto",
+
+          padding: "5px 10px",
+
+          fontSize: "18px",
+
+          "&:hover": {
+            backgroundColor: "#1e596e",
+          },
+        }}
+      >
+        Save
+      </Button>
+    );
+
+    button = (
+      <Button
+        variant="contained"
+        startIcon={<GiCancel style={{ color: "red" }} />}
+        onClick={() => {
+          sound.play();
+          setEdit(false);
+        }}
+        sx={{
+          backgroundColor: "#449aba",
+          width: "auto",
+          marginLeft: "auto",
+          marginRight: "auto",
+
+          padding: "5px 10px",
+
+          fontSize: "18px",
+
+          "&:hover": {
+            backgroundColor: "#1e596e",
+          },
+        }}
+      >
+        Cancel
+      </Button>
+    );
+  }
+
   return (
     <div className="room-detail">
       <div className="all">
         <div className="profile">
-          <img
-            src={PF + photo}
-            alt="profile"
-            className="profile-img"
-          />
+          <img src={PF + photo} alt="profile" className="profile-img" />
           {image}
           {edit && (
             <>
-              <label
-                htmlFor="file-input"
-                className="file-input-label"
-              >
+              <label htmlFor="file-input" className="file-input-label">
                 Change profile picture
               </label>
               <input
@@ -237,9 +248,7 @@ const RoomDetail = () => {
               }}
             />
           ) : (
-            <span className="profile-name">
-              {name}
-            </span>
+            <span className="profile-name">{name}</span>
           )}
         </div>
         <div className="content">
@@ -291,7 +300,9 @@ const RoomDetail = () => {
           <div className="info">
             <strong>More Details:</strong>
             <textarea
-              className={`in textarea ${edit ? "wide-textarea" : "read-only-textarea"}`}
+              className={`in textarea ${
+                edit ? "wide-textarea" : "read-only-textarea"
+              }`}
               value={newDetail}
               onChange={(e) => {
                 setNewDetail(e.target.value);

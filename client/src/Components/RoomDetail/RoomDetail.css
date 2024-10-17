@@ -240,3 +240,7 @@ body,
   justify-content: center;
   margin-top: 20px;
 }
+
+.back-deomDetail:hover {
+  background-color: #1e596e;
+}

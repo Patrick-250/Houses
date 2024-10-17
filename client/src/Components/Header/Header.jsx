@@ -2,27 +2,28 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getHouseId } from "../../../Redux/houseID";
 import { getCount } from "../../../Redux/counter";
 import logo from "../../assets/images/logoQLI.png";
+import { Button } from "@mui/material";
+import { IoIosLogIn } from "react-icons/io";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { count } = useSelector((state) => state.counter);
   const { token } = useSelector((state) => state.token);
   const { userId } = useSelector((state) => state.userId);
   const { houseId } = useSelector((state) => state);
   const [name, setName] = useState("");
   const [house, setHouse] = useState("");
-  // console.log("houseid", houseId);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("houseId");
     sessionStorage.removeItem("houseIds");
-    // sessionStorage.setItem("houseIds", JSON.stringify([]));
     window.location.replace("/");
   };
 
@@ -58,8 +59,6 @@ const Header = () => {
     }
   }, [houseId.house_id]);
 
-  // console.log(house);
-
   return (
     <div className="header">
       <Link
@@ -68,7 +67,6 @@ const Header = () => {
           dispatch(getHouseId(null));
           dispatch(getCount(null));
           window.location.replace("/");
-          
         }}
         style={{
           width: "50px",
@@ -90,9 +88,7 @@ const Header = () => {
           }}
         />
       </Link>
-      <div
-        style={{ color: "black", fontFamily: "gotham"}}
-      >
+      <div style={{ color: "black", fontFamily: "gotham" }}>
         {count ? `Room ${count}` : ""}
       </div>
       <div
@@ -105,7 +101,7 @@ const Header = () => {
       >
         {houseId.house_id && house}
       </div>
-      {token && (
+      {token ? (
         <div className="rp">
           <div className="log" style={{ color: "black", fontStyle: "gotham" }}>
             Hi {name},<br />
@@ -115,6 +111,24 @@ const Header = () => {
             Logout
           </button>
         </div>
+      ) : (
+        <Button
+          variant="contained"
+          startIcon={<IoIosLogIn style={{ color: "white" }} />}
+          onClick={() => navigate("/Login")}
+          sx={{
+            backgroundColor: "#449aba",
+            fontSize: "26px",
+            padding: "5px",
+            borderRadius: "10px",
+            "&:hover": {
+              backgroundColor: "#1e596e",
+              borderRadius: "30px",
+            },
+          }}
+        >
+          Login
+        </Button>
       )}
     </div>
   );
