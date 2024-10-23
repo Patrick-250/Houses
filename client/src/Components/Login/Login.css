@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 20px;
-background-color:#1e596e;
+  background-color: #1e596e;
   width: 60%;
   margin-top: 20px;
 }
@@ -40,7 +40,7 @@ background-color:#1e596e;
 .input:focus {
   outline: none;
 }
-p{
+p {
   font-size: 26px;
   color: #a1a1a4;
 }
@@ -51,7 +51,7 @@ p{
   margin: 10px;
   padding: 10px;
   font-size: 20px;
- 
+
   color: white;
   cursor: pointer;
 }

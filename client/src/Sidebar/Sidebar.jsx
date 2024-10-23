@@ -49,7 +49,7 @@ const Sidebar = (props) => {
   useEffect(() => {
     const fetchHouse = async () => {
       try {
-        const res = await axios.get("http://172.16.161.30:3000/api/houses");
+        const res = await axios.get("http://localhost:3000/api/houses");
         setData(res.data);
       } catch (error) {
         console.log(error);
