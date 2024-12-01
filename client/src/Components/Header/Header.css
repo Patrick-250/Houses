@@ -15,7 +15,6 @@
   z-index: 9999999;
 }
 
-
 .rp {
   display: flex;
   align-items: center;
@@ -24,19 +23,18 @@
 }
 
 .out {
- 
   border-radius: 10px;
   color: white;
   border: #449aba;
   padding: 10px;
   font-size: 26px;
   cursor: pointer;
-  background-color:#449aba ;
+  background-color: #449aba;
 }
 .out:hover {
   background-color: #1e596e;
-  color:white;
-  border:#1e596e ;
+  color: white;
+  border: #1e596e;
   border-radius: 30px;
 }
 .namex {

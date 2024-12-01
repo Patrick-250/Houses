@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getHouseId } from "../../../Redux/houseID";
 import { getCount } from "../../../Redux/counter";
-import logo from "../../assets/images/logoQLI.png";
+import logo from "../../assets/images/logo.png";
 import { Button } from "@mui/material";
 import { IoIosLogIn } from "react-icons/io";
 
@@ -32,7 +32,7 @@ const Header = () => {
       const getUser = async () => {
         try {
           const res = await axios.get(
-            `http://172.16.161.30:3000/api/users/${userId}`
+            `http://localhost:3000/api/users/${userId}`
           );
           setName(res.data.username);
         } catch (error) {
@@ -48,7 +48,7 @@ const Header = () => {
       const getHouse = async () => {
         try {
           const res = await axios.get(
-            `http://172.16.161.30:3000/api/houses/${houseId.house_id}`
+            `http://:3000/api/houses/${houseId.house_id}`
           );
           setHouse(res.data.name);
         } catch (error) {
@@ -113,8 +113,13 @@ const Header = () => {
         </div>
       ) : (
         <Button
+          style={{ color: "white", backgroundColor: "#315659" }}
           variant="contained"
-          startIcon={<IoIosLogIn style={{ color: "white" }} />}
+          startIcon={
+            <IoIosLogIn
+              style={{ color: "white", backgroundColor: "#315659" }}
+            />
+          }
           onClick={() => navigate("/Login")}
           sx={{
             backgroundColor: "#449aba",

@@ -16,7 +16,7 @@ const RoomsList = () => {
     const fetchRooms = async () => {
       if (houseId.house_id) {
         const res = await axios.get(
-          `http://172.16.161.30:3000/api/rooms/house/${houseId.house_id}`
+          `http://localhost:3000/api/rooms/house/${houseId.house_id}`
         );
         setRoom(res.data);
       }
@@ -25,7 +25,7 @@ const RoomsList = () => {
   }, [houseId.house_id]);
 
   const handleBackClick = () => {
-    navigate("/"); 
+    navigate("/");
   };
 
   const render = room.map((room) => {
@@ -70,4 +70,4 @@ const Room = (props) => {
       </Link>
     </div>
   );
-}; 
+};

@@ -33,7 +33,7 @@ const RoomDetail = () => {
   const [name, setName] = useState("");
   const [file, setFile] = useState(null);
   const [err, setErr] = useState("");
-  const PF = "http://172.16.161.30:3000/images/";
+  const PF = "http://localhost:3000/images/";
   const detailRef = useRef(null);
 
   const handleUpdate = async (e) => {
@@ -53,11 +53,11 @@ const RoomDetail = () => {
       data.append("file", file);
       newInfo.profilePic = filename;
       try {
-        await axios.post("http://172.16.161.30:3000/api/upload", data);
+        await axios.post("http://localhost:3000/api/upload", data);
       } catch (error) {}
     }
     try {
-      await axios.put(`http://172.16.161.30:3000/api/rooms/${id}`, newInfo, {
+      await axios.put(`http://localhost:3000/api/rooms/${id}`, newInfo, {
         headers: { Authorization: newToken },
       });
       setNewDetail("");
@@ -73,9 +73,7 @@ const RoomDetail = () => {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const res = await axios.get(
-          `http://172.16.161.30:3000/api/rooms/${id}`
-        );
+        const res = await axios.get(`http://localhost:3000/api/rooms/${id}`);
         setData(res.data);
         setDiet(res.data.diet);
         setTransfer(res.data.transfer);
